@@ -18,11 +18,11 @@
 
 
 require 'facebook-php-sdk/src/facebook.php';
-
+require 'SecretsClass.php';
 // Create our Application instance (replace this with your appId and secret).
 $facebook = new Facebook(array(
   'appId'  => '184154878290481',
-  'secret' => '9b95857777c3cfc62454d31aa2c30a77',
+  'secret' => SecretsClass::$secret,
   'cookie' => true,
 ));
 
