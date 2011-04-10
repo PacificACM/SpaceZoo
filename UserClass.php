@@ -1,5 +1,5 @@
 <?php
-require_once 'SecretClass.php'
+require_once 'SecretClass.php';
 class UserClass
 {
     private $user_id;
