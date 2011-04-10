@@ -8,7 +8,7 @@ class UserClass
         $dbhost = 'localhost';
         $dbuser = SecretsClass::$dbUser;
         $dbpass = SecretsClass::$dbPassword;
-        $dbname = 'spacezoo_main'
+        $dbname = 'spacezoo_main';
         $conn = mysql_connect($dbhost, $dbuser, $dbpass);
         mysql_select_db($dbname);
         $result = mysql_query('SELECT user_id FROM user WHERE user_id = ' . $id));
@@ -24,6 +24,10 @@ class UserClass
         }
         mysql_close();
         $user_id = $id;
+    }
+    function getID()
+    {
+        return $user_id;
     }
 }
 ?>
