@@ -1,5 +1,5 @@
 <?php
-require_once 'SecretClass.php';
+require_once 'SecretsClass.php';
 class UserClass
 {
     private $user_id;
@@ -11,7 +11,7 @@ class UserClass
         $dbname = 'spacezoo_main';
         $conn = mysql_connect($dbhost, $dbuser, $dbpass);
         mysql_select_db($dbname);
-        $result = mysql_query('SELECT user_id FROM user WHERE user_id = ' . $id));
+        $result = mysql_query('SELECT user_id FROM user WHERE user_id = ' . $id);
         $foundUser = mysql_numrows($result);
         $currentDateTime = date("Y-m-d H:i:s");
         if($foundUser == 0)
