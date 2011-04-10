@@ -104,41 +104,28 @@ $naitik = $facebook->api('/naitik');
       }());
     </script>
 
-
-    <h1><a href="example.php">php-sdk</a></h1>
-
-    <?php if ($me): ?>
-    <a href="<?php echo $logoutUrl; ?>">
-      <img src="http://static.ak.fbcdn.net/rsrc.php/z2Y31/hash/cxrz4k7j.gif">
-    </a>
-    <?php else: ?>
-    <div>
-      Using JavaScript &amp; XFBML: <fb:login-button></fb:login-button>
-    </div>
-    <div>
-      Without using JavaScript &amp; XFBML:
-      <a href="<?php echo $loginUrl; ?>">
-        <img src="http://static.ak.fbcdn.net/rsrc.php/zB6N8/hash/4li2k73z.gif">
-      </a>
-    </div>
-    <?php endif ?>
-
-    <h3>Session</h3>
-    <?php if ($me): ?>
-    <pre><?php print_r($session); ?></pre>
-
-    <h3>You</h3>
-    <img src="https://graph.facebook.com/<?php echo $uid; ?>/picture">
-    <?php echo $me['name']; ?>
-
-    <h3>Your User Object</h3>
-    <pre><?php print_r($me); ?></pre>
-    <?php else: ?>
-    <strong><em>You are not Connected.</em></strong>
-    <?php endif ?>
-
-    <h3>Naitik</h3>
-    <img src="https://graph.facebook.com/naitik/picture">
-    <?php echo $naitik['name']; ?>
+    <?php
+      $app_id = "184154878290481";
+  
+       $canvas_page = "http://apps.facebook.com/spacezoo/";
+  
+       $auth_url = "http://www.facebook.com/dialog/oauth?client_id=" 
+              . $app_id . "&redirect_uri=" . urlencode($canvas_page);
+  
+       $signed_request = $_REQUEST["signed_request"];
+  
+       list($encoded_sig, $payload) = explode('.', $signed_request, 2); 
+  
+       $data = json_decode(base64_decode(strtr($payload, '-_', '+/')), true);
+  
+       if (empty($data["user_id"])) {
+              echo("<script> top.location.href='" . $auth_url . "'</script>");
+              die();
+       }
+       ?>
+    <h1>Space Zoo</h1>
+    <?php
+      echo ("Welcome User: " . $data["user_id"]);
+     ?>
   </body>
 </html>
