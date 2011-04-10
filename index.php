@@ -18,7 +18,7 @@
 
 
 require 'facebook-php-sdk/src/facebook.php';
-require 'SecretsClass.php';
+require_once 'SecretsClass.php';
 // Create our Application instance (replace this with your appId and secret).
 $facebook = new Facebook(array(
   'appId'  => '184154878290481',
