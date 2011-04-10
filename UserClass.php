@@ -2,6 +2,7 @@
 require_once 'SecretClass.php'
 class UserClass
 {
+    private $user_id;
     function __construct($id)
     {
         $dbhost = 'localhost';
@@ -10,7 +11,19 @@ class UserClass
         $dbname = 'spacezoo_main'
         $conn = mysql_connect($dbhost, $dbuser, $dbpass);
         mysql_select_db($dbname);
-        //if user doesn't exist in db, then create
+        $result = mysql_query('SELECT user_id FROM user WHERE user_id = ' . $id));
+        $foundUser = mysql_numrows($result);
+        $currentDateTime = date("Y-m-d H:i:s");
+        if($foundUser == 0)
+        {
+            my_sql_query('INSERT INTO user (user_id, firstSeen, lastSeen) VALUES ($id, $currentDateTime, $currentDateTime)');
+        }
+        else
+        {
+            my_sql_query('UPDATE user SET lastSeen = ' . $currentDateTime . ' WHERE user_id = ' . $id);
+        }
+        mysql_close();
+        $user_id = $id;
     }
 }
 ?>
