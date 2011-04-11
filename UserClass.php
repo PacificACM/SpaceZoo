@@ -19,7 +19,7 @@ class UserClass
         }
         else
         {
-            mysql_query("UPDATE user SET lastSeen = $currentDateTime WHERE user_id = $id");
+            mysql_query("UPDATE user SET lastSeen = '$currentDateTime' WHERE user_id = $id");
         }
         mysql_close();
         $this->user_id = $id;
