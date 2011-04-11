@@ -6,5 +6,11 @@ class AnimalClass
     {
         $this->animal_id = $id;
     }
+    function getRarity()
+    {
+        $result = mysql_query("SELECT rarity FROM animals WHERE id = $this->animal_id");
+        $row = mysql_fetch_assoc($result);
+        return $row['rarity'];
+    }
 }
 ?>
