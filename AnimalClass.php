@@ -12,6 +12,10 @@ class AnimalClass
         $row = mysql_fetch_assoc($result);
         return $row['rarity'];
     }
+    function setRarity($rarity)
+    {
+        mysql_query("UPDATE animals SET rarity = $rarity WHERE user_id = $this->animal_id");
+    }
     function getAnimalTypeID()
     {
         $result = mysql_query("SELECT type FROM animals WHERE id = $this->animal_id");
