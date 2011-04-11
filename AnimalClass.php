@@ -12,5 +12,11 @@ class AnimalClass
         $row = mysql_fetch_assoc($result);
         return $row['rarity'];
     }
+    function getAnimalTypeID()
+    {
+        $result = mysql_query("SELECT type FROM animals WHERE id = $this->animal_id");
+        $row = mysql_fetch_assoc($result);
+        return $row['type'];
+    }
 }
 ?>
