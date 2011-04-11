@@ -28,5 +28,9 @@ class AnimalClass
         $row = mysql_fetch_assoc($result);
         return $row['name'];
     }
+    function setAnimalName($name)
+    {
+        mysql_query("UPDATE animals SET name = $name WHERE user_id = $this->animal_id");
+    }
 }
 ?>
