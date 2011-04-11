@@ -28,5 +28,11 @@ class UserClass
     {
         return $this->user_id;
     }
+    function getMoney()
+    {
+        $result = mysql_query("SELECT money FROM user WHERE user_id = $this->user_id");
+        $row = mysql_fetch_assoc($result);
+        return $row['money'];
+    }
 }
 ?>
