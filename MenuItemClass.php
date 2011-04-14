@@ -16,7 +16,7 @@ class MenuItem
     {
         return $path;
     }
-    private function printMenuItem()
+    function printMenuItem()
     {
         echo "<a href='$this->getPath()'>$this->getName()</a>";
     }
