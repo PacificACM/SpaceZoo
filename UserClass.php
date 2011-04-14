@@ -31,9 +31,16 @@ class UserClass
     }
     function getMoney()
     {
+        $dbhost = 'localhost';
+        $dbuser = SecretsClass::$dbUser;
+        $dbpass = SecretsClass::$dbPassword;
+        $dbname = 'spacezoo_main';
+        $conn = mysql_connect($dbhost, $dbuser, $dbpass);
+        mysql_select_db($dbname);
         $result = mysql_query("SELECT money FROM user WHERE user_id = $this->user_id");
         $row = mysql_fetch_assoc($result);
         return $row['money'];
+        mysql_close();
     }
 }
 ?>
