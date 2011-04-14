@@ -71,11 +71,6 @@ if ($session) {
           cookie  : true, // enable cookies to allow the server to access the session
           xfbml   : true // parse XFBML
         });
-
-        // whenever the user logs in, we refresh the page
-        FB.Event.subscribe('auth.login', function() {
-          window.location.reload();
-        });
       };
 
       (function() {
