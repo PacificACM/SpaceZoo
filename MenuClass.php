@@ -15,10 +15,8 @@ class Menu
     function printMenu()
     {
         echo '<div id="menu">';
-        
         foreach($this->menuItems as $menuItem)
-        {
-            
+        {  
             echo '<ul>';
             $menuItem->printMenuItem();
             echo '</ul>';
