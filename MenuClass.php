@@ -11,5 +11,14 @@ class Menu
     {
         $this->menuItems[] = $newMenuItem;
     }
+    
+    function printMenu()
+    {
+        foreach($menuItems as $menuItem)
+        {
+            $menuItem->printMenuItem();
+            echo '<br />';
+        }
+    }
 }
 ?>
