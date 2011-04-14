@@ -2,6 +2,7 @@
 require_once 'SecretsClass.php';
 class AnimalClass
 {
+    private $id;
     function __construct($id)
     {
         $this->id = $id;

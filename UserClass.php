@@ -2,6 +2,7 @@
 require_once 'SecretsClass.php';
 class UserClass
 {
+    private $user_id;
     function __construct($id)
     {
         $dbhost = 'localhost';
