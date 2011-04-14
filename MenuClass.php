@@ -14,7 +14,7 @@ class Menu
     
     function printMenu()
     {
-        foreach($menuItems as $menuItem)
+        foreach($this->menuItems as $menuItem)
         {
             $menuItem->printMenuItem();
             echo '<br />';

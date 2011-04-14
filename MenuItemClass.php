@@ -5,20 +5,20 @@ class MenuItem
     private $path;
     function __construct($Name, $Path)
     {
-        $name = $Name;
-        $path = $Path;
+        $this->name = $Name;
+        $this->path = $Path;
     }
     function getName()
     {
-        return $name;
+        return $this->name;
     }
     function getPath()
     {
-        return $path;
+        return $this->path;
     }
     function printMenuItem()
     {
-        echo "<a href='$this->getPath()'>$this->getName()</a>";
+        echo "<a href='$this->path'>$this->name</a>";
     }
 }
 ?>
