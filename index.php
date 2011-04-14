@@ -20,6 +20,7 @@
 require 'facebook-php-sdk/src/facebook.php';
 require_once 'SecretsClass.php';
 require_once 'UserClass.php';
+require_once 'MenuClass.php';
 // Create our Application instance (replace this with your appId and secret).
 $facebook = new Facebook(array(
   'appId'  => '184154878290481',
@@ -126,7 +127,7 @@ $naitik = $facebook->api('/naitik');
        ?>
     <h1 style = "text-align: center;">Space Zoo</h1>
     <?php
-      require_once 'menu.php';
+      
       $currentUser = new UserClass($data["user_id"]);
       echo ("Welcome User: " . $currentUser->getID());
     ?>
