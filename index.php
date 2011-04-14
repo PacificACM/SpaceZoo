@@ -124,8 +124,9 @@ $naitik = $facebook->api('/naitik');
               die();
        }
        ?>
-    <h1>Space Zoo</h1>
+    <h1 style = "text-align: center;">Space Zoo</h1>
     <?php
+      require_once 'menu.php'
       $currentUser = new UserClass($data["user_id"]);
       echo ("Welcome User: " . $currentUser->getID());
     ?>
