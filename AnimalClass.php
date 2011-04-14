@@ -30,7 +30,7 @@ class AnimalClass
     }
     function setName($name)
     {
-        mysql_query("UPDATE animals SET name = $name WHERE user_id = $this->id");
+        mysql_query("UPDATE animals SET name = '$name' WHERE user_id = $this->id");
     }
 }
 ?>
