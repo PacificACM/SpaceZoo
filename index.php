@@ -18,10 +18,9 @@
 
 
 require 'facebook-php-sdk/src/facebook.php';
-require_once 'SecretsClass.php';
-require_once 'UserClass.php';
-require_once 'MenuClass.php';
-require_once 'MenuItemClass.php';
+function __autoload($className) {
+  include $className . '.php';
+}
 // Create our Application instance (replace this with your appId and secret).
 $facebook = new Facebook(array(
   'appId'  => '184154878290481',
@@ -102,9 +101,9 @@ if ($session) {
        ?>
     <h1 style = "text-align: center;">Space Zoo</h1>
     <?php
-      $menu = new Menu();
-      $menu->addMenuItem(new MenuItem('My Home', 'myHome.php'));
-      $menu->addMenuItem(new MenuItem('View Other Zoos', 'otherZoos.php'));
+      $menu = new MenuClass();
+      $menu->addMenuItem(new MenuItemClass('My Home', 'myHome.php'));
+      $menu->addMenuItem(new MenuItemClass('View Other Zoos', 'otherZoos.php'));
       $menu->printMenu();
       $currentUser = new UserClass($data["user_id"]);
       echo ("Welcome User: " . $currentUser->getID());
