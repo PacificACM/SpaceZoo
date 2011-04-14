@@ -8,5 +8,13 @@ class MenuItem
         $name = $Name;
         $path = $Path;
     }
+    function getName()
+    {
+        return $name;
+    }
+    function getPath()
+    {
+        return $path;
+    }
 }
 ?>
