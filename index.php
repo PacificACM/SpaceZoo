@@ -49,16 +49,6 @@ if ($session) {
   }
 }
 
-// login or logout url will be needed depending on current user state.
-if ($me) {
-  $logoutUrl = $facebook->getLogoutUrl();
-} else {
-  $loginUrl = $facebook->getLoginUrl();
-}
-
-// This call will always work since we are fetching public data.
-$naitik = $facebook->api('/naitik');
-
 ?>
 <!doctype html>
 <html xmlns:fb="http://www.facebook.com/2008/fbml">
