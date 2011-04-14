@@ -1,6 +1,6 @@
 <?php
 require_once 'MenuItemClass.php';
-class Menu
+class MenuClass
 {
     private $menuItems;
     function __construct()

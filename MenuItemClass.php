@@ -1,5 +1,5 @@
 <?php
-class MenuItem
+class MenuItemClass
 {
     private $name;
     private $path;
