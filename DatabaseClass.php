@@ -18,5 +18,9 @@ class DatabaseClass
     {
         return mysql_numrows($string);
     }
+    function mysql_close($string)
+    {
+        return mysql_close($string);
+    }
 }
 ?>
