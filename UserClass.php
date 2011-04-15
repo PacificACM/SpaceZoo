@@ -4,12 +4,7 @@ class UserClass
     private $user_id;
     function __construct($id)
     {
-        $dbhost = 'localhost';
-        $dbuser = SecretsClass::$dbUser;
-        $dbpass = SecretsClass::$dbPassword;
-        $dbname = 'spacezoo_main';
-        $conn = mysql_connect($dbhost, $dbuser, $dbpass);
-        mysql_select_db($dbname);
+        $db = new DatabaseClass();
         $result = mysql_query("SELECT user_id FROM user WHERE user_id = $id");
         $foundUser = mysql_numrows($result);
         $currentDateTime = date("Y-m-d H:i:s");
@@ -30,11 +25,7 @@ class UserClass
     }
     function getMoney()
     {
-        $dbhost = 'localhost';
-        $dbuser = SecretsClass::$dbUser;
-        $dbpass = SecretsClass::$dbPassword;
-        $dbname = 'spacezoo_main';
-        $conn = mysql_connect($dbhost, $dbuser, $dbpass);
+        $db = new DatabaseClass();
         mysql_select_db($dbname);
         $result = mysql_query("SELECT money FROM user WHERE user_id = $this->user_id");
         $row = mysql_fetch_assoc($result);
