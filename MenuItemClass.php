@@ -3,10 +3,12 @@ class MenuItemClass
 {
     private $name;
     private $path;
-    function __construct($Name, $Path)
+    private $isCurrentPage;
+    function __construct($Name, $Path, $IsCurrentPage)
     {
         $this->name = $Name;
         $this->path = $Path;
+        $this->isCurrentPage = $IsCurrentPage;
     }
     function getName()
     {
@@ -16,9 +18,20 @@ class MenuItemClass
     {
         return $this->path;
     }
+    function getIsCurrentPage()
+    {
+        return $this->getIsCurrentPage();
+    }
     function printMenuItem()
     {
-        echo "<a href='$this->path'>$this->name</a>";
+        if($this->isCurrentPage)
+        {
+            echo "<h2>$this->name</h2>";
+        }
+        else
+        {
+            echo "<a href='$this->path'>$this->name</a>";
+        }
     }
 }
 ?>
