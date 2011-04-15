@@ -18,9 +18,13 @@ class DatabaseClass
     {
         return mysql_numrows($string);
     }
-    function mysql_close($string)
+    function mysql_close()
     {
-        return mysql_close($string);
+        return mysql_close();
+    }
+    function mysql_fetch_assoc($string)
+    {
+        return mysql_fetch_assoc($string);
     }
 }
 ?>
