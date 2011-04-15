@@ -12,11 +12,11 @@ class DatabaseClass
     }
     function mysql_query($string)
     {
-        mysql_query($string);
+        return mysql_query($string);
     }
     function mysql_numrows($string)
     {
-        mysql_numrows($string);
+        return mysql_numrows($string);
     }
 }
 ?>
