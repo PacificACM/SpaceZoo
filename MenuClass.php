@@ -1,5 +1,7 @@
 <?php
-require_once 'MenuItemClass.php';
+function __autoload($className) {
+  include $className . '.php';
+}
 class MenuClass
 {
     private $menuItems;

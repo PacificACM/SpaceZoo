@@ -1,4 +1,7 @@
 <?php
+function __autoload($className) {
+  include $className . '.php';
+}
 class MenuItemClass
 {
     private $name;

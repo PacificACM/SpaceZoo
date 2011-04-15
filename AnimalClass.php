@@ -1,5 +1,7 @@
 <?php
-require_once 'SecretsClass.php';
+function __autoload($className) {
+  include $className . '.php';
+}
 class AnimalClass
 {
     private $id;
