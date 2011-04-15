@@ -1,7 +1,4 @@
 <?php
-function __autoload($className) {
-  include $className . '.php';
-}
 class UserClass
 {
     private $user_id;

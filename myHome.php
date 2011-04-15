@@ -1,6 +1,5 @@
 <!doctype html>
 <?php
-
     require 'facebook-php-sdk/src/facebook.php';
     function __autoload($className) {
       include $className . '.php';
@@ -25,6 +24,7 @@
     }
     
 ?>
+
 <html xmlns:fb="http://www.facebook.com/2008/fbml">
     <head>
     <title>SpaceZoo</title>
