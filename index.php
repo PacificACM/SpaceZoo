@@ -56,56 +56,13 @@ if ($session) {
     <link rel="stylesheet" type="text/css" href="default.css" /> 
   </head>
   <body>
-    <!--
-      We use the JS SDK to provide a richer user experience. For more info,
-      look here: http://github.com/facebook/connect-js
-    -->
-    <div id="fb-root"></div>
-    <script>
-      window.fbAsyncInit = function() {
-        FB.init({
-          appId   : '<?php echo $facebook->getAppId(); ?>',
-          session : <?php echo json_encode($session); ?>, // don't refetch the session when PHP already has it
-          status  : true, // check login status
-          cookie  : true, // enable cookies to allow the server to access the session
-          xfbml   : true // parse XFBML
-        });
-      };
-
-      (function() {
-        var e = document.createElement('script');
-        e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
-        e.async = true;
-        document.getElementById('fb-root').appendChild(e);
-      }());
-    </script>
-
-    <?php
-      $app_id = "184154878290481";
-  
-       $canvas_page = "http://apps.facebook.com/spacezoo/";
-  
-       $auth_url = "http://www.facebook.com/dialog/oauth?client_id=" 
-              . $app_id . "&redirect_uri=" . urlencode($canvas_page);
-  
-       $signed_request = $_REQUEST["signed_request"];
-  
-       list($encoded_sig, $payload) = explode('.', $signed_request, 2); 
-  
-       $data = json_decode(base64_decode(strtr($payload, '-_', '+/')), true);
-  
-       if (empty($data["user_id"])) {
-              echo("<script> top.location.href='" . $auth_url . "'</script>");
-              die();
-       }
-       ?>
     <h1 style = "text-align: center;">Space Zoo</h1>
     <?php
       $menu = new MenuClass();
-      $menu->addMenuItem(new MenuItemClass('My Home', 'myHome.php'));
-      $menu->addMenuItem(new MenuItemClass('View Other Zoos', 'otherZoos.php'));
+      $menu->addMenuItem(new MenuItemClass('My Home', 'myHome.php', false));
+      $menu->addMenuItem(new MenuItemClass('View Other Zoos', 'otherZoos.php', false));
       $menu->printMenu();
-      $currentUser = new UserClass($data["user_id"]);
+      $currentUser = new UserClass($facebook->getUser());
       echo ("Welcome User: " . $currentUser->getID());
     ?>
   </body>
