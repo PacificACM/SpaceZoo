@@ -10,10 +10,12 @@
   </head>
   <body>
     <h1 style = "text-align: center;">Space Zoo</h1>
+
     <table>
         <?php
             $menu = new MenuClass();
             $menu->addMenuItem(new MenuItemClass('Index', 'index.php', false));
+            $menu->addMenuItem(new MenuItemClass('My Home', 'myHome.php', true));
             $menu->addMenuItem(new MenuItemClass('View Other Zoos', 'otherZoos.php', false));
             $menu->printMenu();
             $user = new UserClass($facebook->getUser());

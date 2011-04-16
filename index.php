@@ -11,6 +11,7 @@ require 'facebookIncludes.php';
     <h1 style = "text-align: center;">Space Zoo</h1>
     <?php
       $menu = new MenuClass();
+      $menu->addMenuItem(new MenuItemClass('Index', 'index.php', true));
       $menu->addMenuItem(new MenuItemClass('My Home', 'myHome.php', false));
       $menu->addMenuItem(new MenuItemClass('View Other Zoos', 'otherZoos.php', false));
       $menu->printMenu();
