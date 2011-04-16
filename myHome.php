@@ -16,7 +16,7 @@
             $menu = new MenuClass();
             $menu->addMenuItem(new MenuItemClass('Index', 'index.php', false));
             $menu->addMenuItem(new MenuItemClass('My Home', 'myHome.php', true));
-            $menu->addMenuItem(new MenuItemClass('View Other Zoos', 'otherZoos.php', false));
+            $menu->addMenuItem(new MenuItemClass('Current Planet', 'currentPlanet.php', false));
             $menu->printMenu();
             $user = new UserClass($facebook->getUser());
             $money = $user->getMoney();
