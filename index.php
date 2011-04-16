@@ -13,7 +13,7 @@ require 'facebookIncludes.php';
       $menu = new MenuClass();
       $menu->addMenuItem(new MenuItemClass('Index', 'index.php', true));
       $menu->addMenuItem(new MenuItemClass('My Home', 'myHome.php', false));
-      $menu->addMenuItem(new MenuItemClass('View Other Zoos', 'otherZoos.php', false));
+      $menu->addMenuItem(new MenuItemClass('Current Planet', 'currentPlanet.php', false));
       $menu->printMenu();
       $currentUser = new UserClass($facebook->getUser());
       echo ("Welcome User: " . $currentUser->getID());
