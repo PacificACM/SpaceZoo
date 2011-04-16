@@ -26,7 +26,7 @@ class MenuItemClass
     {
         if($this->isCurrentPage)
         {
-            echo "<h2>$this->name</h2>";
+            echo "<h2 style='background: #eee;'>$this->name</h2>";
         }
         else
         {
