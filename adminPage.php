@@ -25,9 +25,11 @@
             $menu->addMenuItem(new MenuItemClass('Admin Page', 'adminPage.php', true));
             $menu->printMenu();
             
-            $money = $user->getMoney();
-            echo "Admin Page";
         ?>
+        <form name="form1" method="" action="">
+            <input type="text" value="xLocation">
+            <input type="submit" name="Generate" value="Generate">
+        </form>
     </table>
   </body>
 </html>
