@@ -18,17 +18,25 @@ class UniverseSeederClass
             $yRand *= 1000;
             $xRand += $xRandDecimal;
             $yRand += $yRandDecimal;
-            $tempLow = mt_rand(-265,1000);
+            $tempLow = mt_rand(-265,200);
             $tempHighOffset = mt_rand(50,1000);
             $tempHigh = $tempLow + $tempHighOffset;
             $result = mysql_query("SELECT id FROM planets WHERE (ABS(xLocation - $xRand) < 50) AND (ABS(yLocation - $yRand) < 50)");
             $numRows = mysql_numrows($result);
+            $query = "INSERT INTO planets (name, tempLow, tempHigh, xLocation, yLocation) VALUES ('Unnamed', $tempLow, $tempHigh, $xRand, $yRand)";
+            echo $query;
             if($numRows == 0)
             {
-                mysql_query("INSERT INTO planets (name, tempLow, tempHigh, xLocation, yLocation) VALUES ('Unnamed', $tempLow, $tempHigh, $xRand, $yRand))");
+                mysql_query($query);
             }
         }
         mysql_close();
+    }
+    function createAnimalTypes($numTypes)
+    {
+        $db = new DatabaseClass();
+        $rarity = mt_rand();
+        $query = "INSERT INTO animalTypes (name, rarity, tempLow, tempHigh) VALUES ('Unnamed', $rarity, $tempLow, $tempHigh)";
     }
 }
 ?>
