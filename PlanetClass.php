@@ -20,5 +20,12 @@ class PlanetClass
         $row = mysql_fetch_assoc($result);
         return $row['lowTemp'];
     }
+    function getHighTemp()
+    {
+        $db = new DatabaseClass();
+        $result = mysql_query("SELECT highTemp FROM planets WHERE id = $this->id");
+        $row = mysql_fetch_assoc($result);
+        return $row['highTemp'];
+    }
 }
 ?>
