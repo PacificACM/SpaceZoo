@@ -1,9 +1,10 @@
 <?php
 class PlanetClass
 {
-    function __construct()
+    private $id;
+    function __construct($id)
     {
-        
+        $this->id = $id;
     }
 }
 ?>
