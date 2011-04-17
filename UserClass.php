@@ -32,5 +32,13 @@ class UserClass
         return $row['money'];
         mysql_close();
     }
+    function isAdmin()
+    {
+        if($this->user_id == 723845292)
+        {
+            return true;
+        }
+        return false;
+    }
 }
 ?>
