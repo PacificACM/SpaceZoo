@@ -26,8 +26,12 @@
             $menu->printMenu();
             
         ?>
-        <form name="form1" method="" action="">
-            <input type="text" value="xLocation">
+        <form name="form1" method="post" action="adminPage.php">
+            <input type="text" value="xLocation1" name="xLocation1">
+            <input type="text" value="yLocation1" name="yLocation1">
+            <input type="text" value="xLocation2" name="xLocation2">
+            <input type="text" value="yLocation2" name="yLocation2">
+            <input type="text" value="numPlanets" name="numPlanets">
             <input type="submit" name="Generate" value="Generate">
         </form>
     </table>
