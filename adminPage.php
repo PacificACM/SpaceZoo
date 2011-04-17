@@ -24,7 +24,11 @@
             $menu->addMenuItem(new MenuItemClass('Current Planet', 'currentPlanet.php', false));
             $menu->addMenuItem(new MenuItemClass('Admin Page', 'adminPage.php', true));
             $menu->printMenu();
-            
+            if(isset($_POST['Generate']))
+            {
+                $seederClass = new UniverseSeederClass();
+                $seederClass->addPlanetsToArea($_POST['xLocation1'],$_POST['yLocation1'],$_POST['xLocation2'],$_POST['yLocation2'],$_POST['numPlanets']);
+            }
         ?>
         <form name="form1" method="post" action="adminPage.php">
             <input type="text" value="xLocation1" name="xLocation1">
