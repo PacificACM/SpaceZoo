@@ -5,5 +5,10 @@ class UniverseClass
     {
         
     }
+    function getPlanetIDNextTo($xLocation, $yLocation, $planetsAway)
+    {
+        $db = new DatabaseClass();
+        
+    }
 }
 ?>
