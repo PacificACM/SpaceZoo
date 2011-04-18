@@ -13,27 +13,27 @@ class PlanetClass
         $row = mysql_fetch_assoc($result);
         return $row['name'];
     }
-    function getLowTemp()
+    function getTempLow()
     {
         $db = new DatabaseClass();
-        $result = mysql_query("SELECT lowTemp FROM planets WHERE id = $this->id");
+        $result = mysql_query("SELECT tempLow FROM planets WHERE id = $this->id");
         $row = mysql_fetch_assoc($result);
-        return $row['lowTemp'];
+        return $row['tempLow'];
     }
-    function getHighTemp()
+    function getTempHigh()
     {
         $db = new DatabaseClass();
-        $result = mysql_query("SELECT highTemp FROM planets WHERE id = $this->id");
+        $result = mysql_query("SELECT tempHigh FROM planets WHERE id = $this->id");
         $row = mysql_fetch_assoc($result);
-        return $row['highTemp'];
+        return $row['tempHigh'];
     }
     function canPlanetSupport($animalType)
     {
-        if($animal->getLowTemp() > $this->getLowTemp())
+        if($animal->getTempLow() > $this->getTempLow())
         {
             return false;
         }
-        if($animal->getHighTemp() < $this->getHighTemp())
+        if($animal->getTempHigh() < $this->getTempHigh())
         {
             return false;
         }
