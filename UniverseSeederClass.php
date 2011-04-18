@@ -40,7 +40,29 @@ class UniverseSeederClass
             $tempLow = mt_rand(-265,200);
             $tempHigh = mt_rand(50, 1000);
             $query = "INSERT INTO animalTypes (name, rarity, tempLow, tempHigh) VALUES ('Unnamed', $rarity, $tempLow, $tempHigh)";
-            mysql_query($query);
+            echo $query;
+            mysql_query($query) or die(mysql_error());
+        }
+        mysql_close();
+    }
+    function createPlanetAnimalTypes($numConnections)
+    {
+        $db = new DatabaseClass();
+        for($i = 0; $i < $numConnections; $i++)
+        {
+            $result = mysql_query("SELECT id FROM planets");
+            $numPlanets = mysql_numrows($result);
+            $result = mysql_query("SELECT id FROM animalTypes");
+            $numAnimalTypes = mysql_numrows($result);
+            $numPlanet = mt_rand(0,$numPlanets);
+            $numAnimalType = mt_rand(0,$numAnimalTypes);
+            $currPlanet = new PlanetClass($numPlanet);
+            $currAnimalType = new AnimalTypeClass($numAnimalType);
+            if($currPlanet->canPlanetSupport($currAnimalType))
+            {
+                $query = "INSERT INTO planetAnimalTypes (animalTypeID, planetID) VALUES ($numAnimalType, $numPlanet)";
+                mysql_query($query);
+            }
         }
         mysql_close();
     }
