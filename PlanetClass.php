@@ -45,7 +45,16 @@ class PlanetClass
     function doesPlanetContain($animalType)
     {
         $db = new DatabaseClass();
+        $result = mysql_query("SELECT animalTypeID FROM planetAnimalTypes WHERE planetID = $this->id");
         mysql_close();
+        while($row = mysql_fetch_assoc($result))
+        {
+            if($row['animalTypeID'] == $animalType->getID())
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
 ?>
