@@ -27,5 +27,17 @@ class PlanetClass
         $row = mysql_fetch_assoc($result);
         return $row['highTemp'];
     }
+    function canPlanetSupport($animal)
+    {
+        if($animal->getLowTemp() > $this->getLowTemp())
+        {
+            return false;
+        }
+        if($animal->getHighTemp() < $this->getHighTemp())
+        {
+            return false;
+        }
+        return true;
+    }
 }
 ?>
