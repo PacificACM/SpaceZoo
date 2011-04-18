@@ -30,6 +30,12 @@ class AnimalTypeClass
         $row = mysql_fetch_assoc($result);
         return $row['rarity'];
     }
-    
+    function getLowTemp()
+    {
+        $db = new DatabaseClass();
+        $result = mysql_query("SELECT lowTemp FROM animalTypes WHERE id = $this->id");
+        $row = mysql_fetch_assoc($result);
+        return $row['lowTemp'];
+    }
 }
 ?>
