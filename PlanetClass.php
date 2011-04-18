@@ -39,5 +39,10 @@ class PlanetClass
         }
         return true;
     }
+    function doesPlanetContain($animalType)
+    {
+        $db = new DatabaseClass();
+        
+    }
 }
 ?>
