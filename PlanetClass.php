@@ -52,5 +52,15 @@ class PlanetClass
         }
         return false;
     }
+    function getAnimalTypes()
+    {
+        $db = new DatabaseClass();
+        $result = mysql_query("SELECT animalTypeID FROM planetAnimalTypes WHERE planetID = $this->id");
+        $animalTypes = array();
+        while($row = mysql_fetch_assoc($result))
+        {
+            $animalTypes =
+        }
+    }
 }
 ?>
