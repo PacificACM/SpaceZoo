@@ -6,12 +6,6 @@ class AnimalTypeClass
     {
         $this->id = $id;
     }
-    function createNewAnimalOfType()
-    {
-        $db = new DatabaseClass();
-        mysql_query("INSERT INTO animals (name, type, rarity) VALUES ('Unnamed', $this->id, 1)");
-        //need to fix rarity based on animalType own inherent rarity.
-    }
     function getID()
     {
         return $this->id;
