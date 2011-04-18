@@ -16,7 +16,6 @@ class UserClass
         {
             mysql_query("UPDATE user SET lastSeen = '$currentDateTime' WHERE user_id = $id");
         }
-        mysql_close();
         $this->user_id = $id;
     }
     function getID()
@@ -29,7 +28,6 @@ class UserClass
         mysql_select_db($dbname);
         $result = mysql_query("SELECT money FROM user WHERE user_id = $this->user_id");
         $row = mysql_fetch_assoc($result);
-        mysql_close();
         return $row['money'];
     }
     function isAdmin()

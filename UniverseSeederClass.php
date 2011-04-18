@@ -29,7 +29,6 @@ class UniverseSeederClass
                 mysql_query($query);
             }
         }
-        mysql_close();
     }
     function createAnimalTypes($numTypes)
     {
@@ -43,16 +42,15 @@ class UniverseSeederClass
             echo $query;
             mysql_query($query) or die(mysql_error());
         }
-        mysql_close();
     }
     function createPlanetAnimalTypes($numConnections)
     {
         $db = new DatabaseClass();
         for($i = 0; $i < $numConnections; $i++)
         {
-            $result = mysql_query("SELECT id FROM planets");
+            $result = mysql_query("SELECT id FROM planets") or die(mysql_error());
             $numPlanets = mysql_numrows($result);
-            $result = mysql_query("SELECT id FROM animalTypes");
+            $result = mysql_query("SELECT id FROM animalTypes") or die(mysql_error());
             $numAnimalTypes = mysql_numrows($result);
             $numPlanet = mt_rand(0,$numPlanets);
             $numAnimalType = mt_rand(0,$numAnimalTypes);
@@ -61,10 +59,9 @@ class UniverseSeederClass
             if($currPlanet->canPlanetSupport($currAnimalType))
             {
                 $query = "INSERT INTO planetAnimalTypes (animalTypeID, planetID) VALUES ($numAnimalType, $numPlanet)";
-                mysql_query($query);
+                mysql_query($query) or die(mysql_error());
             }
         }
-        mysql_close();
     }
 }
 ?>

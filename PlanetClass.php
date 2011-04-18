@@ -11,7 +11,6 @@ class PlanetClass
         $db = new DatabaseClass();
         $result = mysql_query("SELECT name FROM planets WHERE id = $this->id");
         $row = mysql_fetch_assoc($result);
-        mysql_close();
         return $row['name'];
     }
     function getTempLow()
@@ -19,7 +18,6 @@ class PlanetClass
         $db = new DatabaseClass();
         $result = mysql_query("SELECT tempLow FROM planets WHERE id = $this->id");
         $row = mysql_fetch_assoc($result);
-        mysql_close();
         return $row['tempLow'];
     }
     function getTempHigh()
@@ -27,7 +25,6 @@ class PlanetClass
         $db = new DatabaseClass();
         $result = mysql_query("SELECT tempHigh FROM planets WHERE id = $this->id");
         $row = mysql_fetch_assoc($result);
-        mysql_close();
         return $row['tempHigh'];
     }
     function canPlanetSupport($animalType)
@@ -46,7 +43,6 @@ class PlanetClass
     {
         $db = new DatabaseClass();
         $result = mysql_query("SELECT animalTypeID FROM planetAnimalTypes WHERE planetID = $this->id");
-        mysql_close();
         while($row = mysql_fetch_assoc($result))
         {
             if($row['animalTypeID'] == $animalType->getID())

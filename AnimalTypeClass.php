@@ -15,7 +15,6 @@ class AnimalTypeClass
         $db = new DatabaseClass();
         $result = mysql_query("SELECT name FROM animalTypes WHERE id = $this->id");
         $row = mysql_fetch_assoc($result);
-        mysql_close();
         return $row['name'];
     }
     function getRarity()
@@ -23,7 +22,6 @@ class AnimalTypeClass
         $db = new DatabaseClass();
         $result = mysql_query("SELECT rarity FROM animalTypes WHERE id = $this->id");
         $row = mysql_fetch_assoc($result);
-        mysql_close();
         return $row['rarity'];
     }
     function getTempLow()
@@ -31,7 +29,6 @@ class AnimalTypeClass
         $db = new DatabaseClass();
         $result = mysql_query("SELECT tempLow FROM animalTypes WHERE id = $this->id");
         $row = mysql_fetch_assoc($result);
-        mysql_close();
         return $row['tempLow'];
     }
     function getTempHigh()
@@ -39,7 +36,6 @@ class AnimalTypeClass
         $db = new DatabaseClass();
         $result = mysql_query("SELECT tempHigh FROM animalTypes WHERE id = $this->id");
         $row = mysql_fetch_assoc($result);
-        mysql_close();
         return $row['tempHigh'];
     }
 }
