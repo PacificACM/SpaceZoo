@@ -37,5 +37,12 @@ class AnimalTypeClass
         $row = mysql_fetch_assoc($result);
         return $row['lowTemp'];
     }
+    function getHighTemp()
+    {
+        $db = new DatabaseClass();
+        $result = mysql_query("SELECT highTemp FROM animalTypes WHERE id = $this->id");
+        $row = mysql_fetch_assoc($result);
+        return $row['highTemp'];
+    }
 }
 ?>
