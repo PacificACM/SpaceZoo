@@ -29,11 +29,11 @@ class PlanetClass
     }
     function canPlanetSupport($animalType)
     {
-        if($animal->getTempLow() > $this->getTempLow())
+        if($animalType->getTempLow() > $this->getTempLow())
         {
             return false;
         }
-        if($animal->getTempHigh() < $this->getTempHigh())
+        if($animalType->getTempHigh() < $this->getTempHigh())
         {
             return false;
         }
