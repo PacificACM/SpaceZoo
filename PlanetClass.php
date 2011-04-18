@@ -27,7 +27,7 @@ class PlanetClass
         $row = mysql_fetch_assoc($result);
         return $row['highTemp'];
     }
-    function canPlanetSupport($animal)
+    function canPlanetSupport($animalType)
     {
         if($animal->getLowTemp() > $this->getLowTemp())
         {
