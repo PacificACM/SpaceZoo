@@ -59,8 +59,9 @@ class PlanetClass
         $animalTypes = array();
         while($row = mysql_fetch_assoc($result))
         {
-            $animalTypes =
+            $animalTypes[] = new AnimalTypeClass($row['animalTypeID']);
         }
+        return $animalTypes;
     }
 }
 ?>
