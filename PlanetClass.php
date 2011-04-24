@@ -34,6 +34,13 @@ class PlanetClass
         $row = mysql_fetch_assoc($result);
         return $row['xLocation'];
     }
+    function getYLocation()
+    {
+        $db = new DatabaseClass();
+        $result = mysql_query("SELECT yLocation FROM planets WHERE id = $this->id");
+        $row = mysql_fetch_assoc($result);
+        return $row['yLocation'];
+    }
     function isNull()
     {
         if($this->id == -1)
