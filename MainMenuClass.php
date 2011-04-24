@@ -24,7 +24,7 @@ class MainMenuClass
         {
             MainMenuClass::addMenuItemAuto('Admin Page', 'adminPage.php');
         }
-        $menu->printMenu();
+        MainMenuClass::$menu->printMenu();
     }
 }
 ?>
