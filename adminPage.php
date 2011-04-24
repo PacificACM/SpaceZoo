@@ -22,6 +22,7 @@
             $menu->addMenuItem(new MenuItemClass('Index', 'index.php', false));
             $menu->addMenuItem(new MenuItemClass('My Home', 'myHome.php', false));
             $menu->addMenuItem(new MenuItemClass('Current Planet', 'currentPlanet.php', false));
+            $menu->addMenuItem(new MenuItemClass('Ship Actions', 'shipActions.php', false));
             $menu->addMenuItem(new MenuItemClass('Admin Page', 'adminPage.php', true));
             $menu->printMenu();
             if(isset($_POST['Generate']))
