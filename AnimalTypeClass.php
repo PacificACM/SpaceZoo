@@ -9,7 +9,15 @@ class AnimalTypeClass
     function createNewAnimal()
     {
         $db = new DatabaseClass();
-
+        $newAnimalRarity = $this->getRarity();
+        $newAnimalRarity += MathClass::getNormallyDistributedRand() / 4;
+        if($newAnimalRarity <= 0)
+        {
+            $newAnimalRarity = 0;
+        }
+        mysql_query("INSERT INTO animals (name, type, rarity) VALUES ('Unnamed', $this->id, $newAnimalRarity)");
+        $newAnimal = new AnimalClass(mysql_insert_id());
+        return $newAnimal;
     }
     function getID()
     {
