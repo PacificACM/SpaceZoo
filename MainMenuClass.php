@@ -13,14 +13,17 @@ class MainMenuClass
             $menu->addMenuItem(new MenuItemClass($name, $file, false));
         }
     }
-    static function show()
+    static function show($isAdmin)
     {
         MainMenuClass::$menu = new MenuClass();
         MainMenuClass::addMenuItemAuto('Index', 'index.php');
         MainMenuClass::addMenuItemAuto('My Home', 'myHome.php');
         MainMenuClass::addMenuItemAuto('Current Planet', 'currentPlanet.php');
         MainMenuClass::addMenuItemAuto('Ship Actions', 'shipActions.php');
-        MainMenuClass::addMenuItemAuto('Admin Page', 'adminPage.php');
+        if($isAdmin)
+        {
+            MainMenuClass::addMenuItemAuto('Admin Page', 'adminPage.php');
+        }
         $menu->printMenu();
     }
 }
