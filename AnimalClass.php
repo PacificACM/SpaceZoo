@@ -6,11 +6,6 @@ class AnimalClass
     {
         $this->id = $id;
     }
-    static function createNewAnimal()
-    {
-        $db = new DatabaseClass();
-        
-    }
     function getRarity()
     {
         $db = new DatabaseClass();
