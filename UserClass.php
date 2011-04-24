@@ -40,7 +40,10 @@ class UserClass
     function getCurrentPlanet()
     {
         $db = new DatabaseClass();
-        
+        $result = mysql_query("SELECT currentPlanetID FROM user WHERE user_id = $this->user_id");
+        $row = mysql_fetch_assoc($result);
+        $currPlanet = new PlanetClass($row['currentPlanetID']);
+        return $currPlanet;
     }
 }
 ?>
