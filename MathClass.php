@@ -21,5 +21,14 @@ class MathClass
 	    return $arr[0];
 	}
     }
+    static function sumElementsInArr($arr)
+    {
+        $rarityTotal = 0;
+        for($i = 0; $i < count($arr); $i++)
+        {
+            $rarityTotal += $arr[$i];
+        }
+        return $rarityTotal;
+    }
 }
 ?>
