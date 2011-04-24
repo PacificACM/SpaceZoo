@@ -32,14 +32,14 @@ class PlanetClass
         $db = new DatabaseClass();
         $result = mysql_query("SELECT xLocation FROM planets WHERE id = $this->id");
         $row = mysql_fetch_assoc($result);
-        return $row['xLocation'];
+        return $row['xLocation']/1000;
     }
     function getYLocation()
     {
         $db = new DatabaseClass();
         $result = mysql_query("SELECT yLocation FROM planets WHERE id = $this->id");
         $row = mysql_fetch_assoc($result);
-        return $row['yLocation'];
+        return $row['yLocation']/1000;
     }
     function isNull()
     {
