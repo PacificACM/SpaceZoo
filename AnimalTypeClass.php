@@ -6,6 +6,11 @@ class AnimalTypeClass
     {
         $this->id = $id;
     }
+    function createNewAnimal()
+    {
+        $db = new DatabaseClass();
+
+    }
     function getID()
     {
         return $this->id;
