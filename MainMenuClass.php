@@ -6,11 +6,11 @@ class MainMenuClass
     {
         if($file == basename($_SERVER['REQUEST_URI'], ".php") . ".php")
         {
-            $menu->addMenuItem(new MenuItemClass($name, $file, true));
+            MainMenuClass::$menu->addMenuItem(new MenuItemClass($name, $file, true));
         }
         else
         {
-            $menu->addMenuItem(new MenuItemClass($name, $file, false));
+            MainMenuClass::$menu->addMenuItem(new MenuItemClass($name, $file, false));
         }
     }
     static function show($isAdmin)
