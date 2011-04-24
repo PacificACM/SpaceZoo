@@ -10,7 +10,7 @@ class UserClass
         $currentDateTime = date("Y-m-d H:i:s");
         if($foundUser == 0)
         {
-            mysql_query("INSERT INTO user (user_id, firstSeen, lastSeen) VALUES ('$id', '$currentDateTime', '$currentDateTime')");
+            mysql_query("INSERT INTO user (user_id, firstSeen, lastSeen, currentPlanetID) VALUES ('$id', '$currentDateTime', '$currentDateTime', -1)");
         }
         else
         {
