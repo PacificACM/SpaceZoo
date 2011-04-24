@@ -27,6 +27,21 @@ class PlanetClass
         $row = mysql_fetch_assoc($result);
         return $row['tempHigh'];
     }
+    function getXLocation()
+    {
+        $db = new DatabaseClass();
+        $result = mysql_query("SELECT xLocation FROM planets WHERE id = $this->id");
+        $row = mysql_fetch_assoc($result);
+        return $row['xLocation'];
+    }
+    function isNull()
+    {
+        if($this->id == -1)
+        {
+            return true;
+        }
+        return false;
+    }
     function canPlanetSupport($animalType)
     {
         if($animalType->getTempLow() > $this->getTempLow())
@@ -81,7 +96,7 @@ class PlanetClass
         //lower rarity values mean better chance that it
         //should hit the random numberl
         
-        $rarityArr = $this::getRarityArr($animalTypes);
+        $rarityArr = PlanetClass::getRarityArr($animalTypes);
         $lcmRarity = MathClass::lcmArr($rarityArr);
         for($i = 0; $i < count($rarityArr); $i++)
         {
