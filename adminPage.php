@@ -31,5 +31,16 @@
             <input type="text" value="numPlanets" name="numPlanets">
             <input type="submit" name="Generate" value="Generate">
         </form>
+        <?php
+            $db = new DatabaseClass();
+            $user_id = $user->getID();
+            $result = mysql_query("SELECT user_id FROM user ORDER BY firstSeen");
+            while($row = mysql_fetch_assoc($result))
+            {
+                $facebookUser = $facebook->api($row['user_id']);
+                echo $facebookUser['name'];
+                echo "<br />";
+            }
+        ?>
   </body>
 </html>
