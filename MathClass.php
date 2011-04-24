@@ -1,7 +1,7 @@
 <?php
 class MathClass
 {
-    static function gcm(a, b)
+    static function gcm($a, b)
     {
 	return ( b == 0 ) ? (a):( gcm(b, a % b) );
     }
@@ -29,6 +29,13 @@ class MathClass
             $rarityTotal += $arr[$i];
         }
         return $rarityTotal;
+    }
+    static function getNormallyDistributedRand()
+    {
+	$randFloat1 = mt_rand()/mt_getrandmax();
+        $randFloat2 = mt_rand()/mt_getrandmax();
+        $normallyDistributedRand = sqrt(-2*log($randFloat1))*cos(2*pi()*$randFloat2);
+	return $normallyDistributedRand;
     }
 }
 ?>
