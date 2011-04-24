@@ -17,11 +17,21 @@
         $menu->addMenuItem(new MenuItemClass('Current Planet', 'currentPlanet.php', true));
         $menu->printMenu();
         $user = new UserClass($facebook->getUser());
+        $currentPlanet = $user->getCurrentPlanet();
+        if($currentPlanet->isNull())
+        {
+            die('You are not on a planet');
+        }
     ?>
     <table>
         <tr>
             <td>
-            
+                Planet: <?php echo $currentPlanet->getName() ?>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Location: <?php echo $currentPlanet->getXLocation() ?>, <?php echo $currentPlanet->getYLocation() ?>
             </td>
         </tr>
     </table>
