@@ -25,7 +25,6 @@ class UserClass
     function getMoney()
     {
         $db = new DatabaseClass();
-        mysql_select_db($dbname);
         $result = mysql_query("SELECT money FROM user WHERE user_id = $this->user_id");
         $row = mysql_fetch_assoc($result);
         return $row['money'];
@@ -37,6 +36,11 @@ class UserClass
             return true;
         }
         return false;
+    }
+    function getCurrentPlanet()
+    {
+        $db = new DatabaseClass();
+        
     }
 }
 ?>
