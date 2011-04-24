@@ -1,13 +1,13 @@
 <?php
 class MathClass
 {
-    static function gcm($a, b)
+    function gcm($a, $b)
     {
-	return ( b == 0 ) ? (a):( gcm(b, a % b) );
+	return ( $b == 0 ) ? ($a):( gcm($b, $a % $b) );
     }
-    static function lcm(a, b)
+    function lcm($a, $b)
     {
-        return ( a / gcm(a,b) ) * b;
+	    return ( $a / gcm($a,$b) ) * $b;
     }
     static function lcmArr($arr)
     {
