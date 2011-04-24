@@ -17,7 +17,13 @@
         $menu->addMenuItem(new MenuItemClass('Current Planet', 'currentPlanet.php', true));
         $menu->printMenu();
         $user = new UserClass($facebook->getUser());
-        echo "Current planet info here";
     ?>
+    <table>
+        <tr>
+            <td>
+            
+            </td>
+        </tr>
+    </table>
   </body>
 </html>
