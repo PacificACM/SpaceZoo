@@ -11,16 +11,7 @@ require 'facebookIncludes.php';
     <h1 style = "text-align: center;">Space Zoo</h1>
     <?php
       $user = new UserClass($facebook->getUser());
-      $menu = new MenuClass();
-      $menu->addMenuItem(new MenuItemClass('Index', 'index.php', true));
-      $menu->addMenuItem(new MenuItemClass('My Home', 'myHome.php', false));
-      $menu->addMenuItem(new MenuItemClass('Current Planet', 'currentPlanet.php', false));
-      $menu->addMenuItem(new MenuItemClass('Ship Actions', 'shipActions.php', false));
-      if($user->isAdmin())
-      {
-        $menu->addMenuItem(new MenuItemClass('Admin Page', 'adminPage.php', false));
-      }
-      $menu->printMenu();
+      MainMenuClass::show($user->isAdmin());
       echo ("Welcome User: " . $user->getID());
     ?>
   </body>
