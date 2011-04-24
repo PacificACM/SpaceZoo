@@ -15,6 +15,7 @@ require 'facebookIncludes.php';
       $menu->addMenuItem(new MenuItemClass('Index', 'index.php', true));
       $menu->addMenuItem(new MenuItemClass('My Home', 'myHome.php', false));
       $menu->addMenuItem(new MenuItemClass('Current Planet', 'currentPlanet.php', false));
+      $menu->addMenuItem(new MenuItemClass('Ship Actions', 'shipActions.php', false));
       if($user->isAdmin())
       {
         $menu->addMenuItem(new MenuItemClass('Admin Page', 'adminPage.php', false));
