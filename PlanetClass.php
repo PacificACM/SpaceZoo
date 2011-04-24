@@ -63,25 +63,14 @@ class PlanetClass
         }
         return $animalTypes;
     }
-    function gcm(a, b)
+    private static function getRarityArr($animalTypes)
     {
-	return ( b == 0 ) ? (a):( gcm(b, a % b) );
-    }
-    function lcm(a, b)
-    {
-        return ( a / gcm(a,b) ) * b;
-    }
-    private function lcmArr($arr)
-    {
-        if (count($arr) > 1)
+        $rarityArr = array();
+        foreach ($animalTypes as $currAnimal)
         {
-	    $arr[] = lcm( array_shift($arr) , array_shift($arr) );
-            return lcmArr( $arr );
-	}
-        else
-        {
-	    return $arr[0];
-	}
+            $rarityArr[] = $currAnimal->getRarity();
+        }
+        return $rarityArr;
     }
     function pickAnimal()
     {
@@ -92,21 +81,27 @@ class PlanetClass
         //lower rarity values mean better chance that it
         //should hit the random numberl
         
-        $rarityArr = array();
-        foreach ($animalTypes as $currAnimal)
-        {
-            $rarityArr[] = $currAnimal->getRarity();
-        }
-        $lcmRarity = lcm_arr($rarityArr);
+        $rarityArr = $this::getRarityArr($animalTypes);
+        $lcmRarity = MathClass::lcmArr($rarityArr);
         for($i = 0; $i < count($rarityArr); $i++)
         {
             $rarityArr[$i] = $lcmRarity/$rarityArr[$i];
         }
-        $rarityTotal = 0;
+        $rarityTotal = MathClass::sumElementsInArr($rarityArr);
+        $randNum = mt_rand(1,$rarityTotal);
         for($i = 0; $i < count($rarityArr); $i++)
         {
-            $rarityTotal += $rarityArr[$i];
+            if($randNum <= $rarityArr[$i])
+            {
+                $chosenAnimalTypeIndex = $i;
+                break;
+            }
+            else
+            {
+                $randNum -= $rarityArr[$i];    
+            }
         }
+        $chosenAnimalType = $animalTypes[$chosenAnimalTypeIndex];
         
     }
 }
