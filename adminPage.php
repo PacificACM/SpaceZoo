@@ -10,21 +10,13 @@
   </head>
   <body>
     <h1 style = "text-align: center;">Space Zoo</h1>
-
-    <table>
         <?php
             $user = new UserClass($facebook->getUser());
             if(!$user->isAdmin())
             {
                 die("Not Admin");
             }
-            $menu = new MenuClass();
-            $menu->addMenuItem(new MenuItemClass('Index', 'index.php', false));
-            $menu->addMenuItem(new MenuItemClass('My Home', 'myHome.php', false));
-            $menu->addMenuItem(new MenuItemClass('Current Planet', 'currentPlanet.php', false));
-            $menu->addMenuItem(new MenuItemClass('Ship Actions', 'shipActions.php', false));
-            $menu->addMenuItem(new MenuItemClass('Admin Page', 'adminPage.php', true));
-            $menu->printMenu();
+            MainMenuClass::show($user->isAdmin());
             if(isset($_POST['Generate']))
             {
                 $seederClass = new UniverseSeederClass();
@@ -39,6 +31,5 @@
             <input type="text" value="numPlanets" name="numPlanets">
             <input type="submit" name="Generate" value="Generate">
         </form>
-    </table>
   </body>
 </html>
