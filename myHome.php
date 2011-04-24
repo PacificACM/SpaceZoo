@@ -14,16 +14,7 @@
     <table>
         <?php
             $user = new UserClass($facebook->getUser());
-            $menu = new MenuClass();
-            $menu->addMenuItem(new MenuItemClass('Index', 'index.php', false));
-            $menu->addMenuItem(new MenuItemClass('My Home', 'myHome.php', true));
-            $menu->addMenuItem(new MenuItemClass('Current Planet', 'currentPlanet.php', false));
-            $menu->addMenuItem(new MenuItemClass('Ship Actions', 'shipActions.php', false));
-            if($user->isAdmin())
-            {
-              $menu->addMenuItem(new MenuItemClass('Admin Page', 'adminPage.php', false));
-            }
-            $menu->printMenu();
+            MainMenuClass::show($user->isAdmin());
             $money = $user->getMoney();
             echo "<tr><td>Money</td><td>$money</td></tr>";
         ?>
