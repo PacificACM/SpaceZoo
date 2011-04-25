@@ -73,7 +73,7 @@ class UserClass
     function getScannerLevel()
     {
         $db = new DatabaseClass();
-        $result = mysql_query("SELECT thrusterLevel FROM user WHERE user_id = $this->user_id");
+        $result = mysql_query("SELECT scannerLevel FROM user WHERE user_id = $this->user_id");
         $row = mysql_fetch_assoc($result);
         return $row['scannerLevel'];
     }
