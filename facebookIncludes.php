@@ -3,7 +3,7 @@
     if("" == basename($_SERVER['REQUEST_URI'], ".php")) {
         $app_id = "184154878290481";
     
-        $canvas_page = "http://space-zoo.com/";
+        $canvas_page = "http://apps.facebook.com/spacezoo/";
     
         $auth_url = "http://www.facebook.com/dialog/oauth?client_id=" 
                . $app_id . "&redirect_uri=" . urlencode($canvas_page);
@@ -16,6 +16,7 @@
     
         if (empty($data["user_id"])) {
             echo("<script> top.location.href='" . $auth_url . "'</script>");
+            die();
         }
     }
     
