@@ -4,6 +4,10 @@ class UserClass
     private $user_id;
     function __construct($id)
     {
+        if($id == 0)
+        {
+            die('You need to authorize the app');
+        }
         $db = new DatabaseClass();
         $result = mysql_query("SELECT user_id FROM user WHERE user_id = $id");
         $foundUser = mysql_numrows($result);
@@ -58,6 +62,13 @@ class UserClass
         $result = mysql_query("SELECT yLocation FROM user WHERE user_id = $this->user_id");
         $row = mysql_fetch_assoc($result);
         return $row['yLocation']/1000;
+    }
+    function getThrusterLevel()
+    {
+        $db = new DatabaseClass();
+        $result = mysql_query("SELECT thrusterLevel FROM user WHERE user_id = $this->user_id");
+        $row = mysql_fetch_assoc($result);
+        return $row['thrusterLevel'];
     }
 }
 ?>
