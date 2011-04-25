@@ -58,7 +58,12 @@
         </tr>
         <tr>
             <td>
-                XLocation: <input type="text" name="xLocation"> YLocation: <input type="text" name="yLocation">
+                X Coordinates: <input type="text" name="xLocation"> Y Coordinates: <input type="text" name="yLocation">
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: center">
+                <input type="submit" name="calculateTrajectory" value="Calculate Trajectory">
             </td>
         </tr>
     </table>
