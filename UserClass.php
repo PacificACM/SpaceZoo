@@ -45,5 +45,12 @@ class UserClass
         $currPlanet = new PlanetClass($row['currentPlanetID']);
         return $currPlanet;
     }
+    function getXLocation()
+    {
+        $db = new DatabaseClass();
+        $result = mysql_query("SELECT xLocation FROM user WHERE user_id = $this->user_id");
+        $row = mysql_fetch_assoc($result);
+        return $row['xLocation']/1000;
+    }
 }
 ?>
