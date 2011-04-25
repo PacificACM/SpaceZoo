@@ -14,6 +14,9 @@
         $user = new UserClass($facebook->getUser());
         MainMenuClass::show($user->isAdmin());
     ?>
+    <br />
+    <br />
+    <br />
     <table class="main">
         <tr>
             <th colspan=2>
@@ -47,7 +50,12 @@
     </table>
     <br />
     <br />
-    <table>
+    <table class="main">
+        <tr>
+            <th>
+                Move
+            </th>
+        </tr>
         <tr>
             <td>
                 XLocation: <input type="text" name="xLocation"> YLocation: <input type="text" name="yLocation">
