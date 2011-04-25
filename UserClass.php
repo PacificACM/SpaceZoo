@@ -70,5 +70,12 @@ class UserClass
         $row = mysql_fetch_assoc($result);
         return $row['thrusterLevel'];
     }
+    function getScannerLevel()
+    {
+        $db = new DatabaseClass();
+        $result = mysql_query("SELECT thrusterLevel FROM user WHERE user_id = $this->user_id");
+        $row = mysql_fetch_assoc($result);
+        return $row['scannerLevel'];
+    }
 }
 ?>
