@@ -14,5 +14,12 @@
         $user = new UserClass($facebook->getUser());
         MainMenuClass::show($user->isAdmin());
     ?>
+    <table>
+        <tr>
+            <td>
+                Location: <?php echo $user->getXLocation() ?>, <?php echo $user->getYLocation() ?>
+            </td>
+        </tr>
+    </table>
   </body>
 </html>
