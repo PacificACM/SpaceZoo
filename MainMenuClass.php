@@ -4,7 +4,7 @@ class MainMenuClass
     private static $menu;
     private static function addMenuItemAuto($name, $file)
     {
-        if("" == basename($_SERVER['REQUEST_URI'], ".php"))
+        if("" == basename($_SERVER['REQUEST_URI'], ".php") || strlen(strchr(basename($_SERVER['REQUEST_URI'], ".php"),"?")) > 40)
         {
             if($name == Index)
             {
