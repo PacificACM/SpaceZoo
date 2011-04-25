@@ -6,7 +6,7 @@ class UserClass
     {
         if($id == 0)
         {
-            die('You need to authorize the app');
+            die('You need to authorize the app or sign into facebook');
         }
         $db = new DatabaseClass();
         $result = mysql_query("SELECT user_id FROM user WHERE user_id = $id");
