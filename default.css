@@ -26,3 +26,28 @@ a:hover {text-decoration: underline; color: black; }
     margin: 0;
     padding: 2px 3px;
 }
+
+table.main {
+    border-width: 1px;
+    border-spacing: 0px;
+    border-style: outset;
+    border-color: gray;
+    border-collapse: separate;
+    background-color: white;
+}
+
+table.main td {
+    border-width: 1px;
+    padding: 2px;
+    border-style: inset;
+    border-color: gray;
+    background-color: white;
+}
+
+table.main th {
+    border-width: 1px;
+    padding: 2px;
+    border-style: inset;
+    border-color: gray;
+    background-color: white;    
+}

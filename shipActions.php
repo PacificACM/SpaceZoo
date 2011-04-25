@@ -14,20 +14,43 @@
         $user = new UserClass($facebook->getUser());
         MainMenuClass::show($user->isAdmin());
     ?>
+    <table class="main">
+        <tr>
+            <th colspan=2>
+                Ship Info
+            </th>    
+        </tr>
+        <tr>
+            <td>
+                Location:
+            </td>
+            <td>
+                <?php echo $user->getXLocation() ?>, <?php echo $user->getYLocation() ?>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Thruster Level: 
+            </td>
+            <td>
+                <?php echo $user->getThrusterLevel() ?>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Scanner Level: 
+            </td>
+            <td>
+                <?php echo $user->getScannerLevel() ?>
+            </td>
+        </tr>
+    </table>
+    <br />
+    <br />
     <table>
         <tr>
             <td>
-                Location: <?php echo $user->getXLocation() ?>, <?php echo $user->getYLocation() ?>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Thruster Level: <?php echo $user->getThrusterLevel() ?>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Scanner Level: <?php echo $user->getScannerLevel() ?>
+                XLocation: <input type="text" name="xLocation"> YLocation: <input type="text" name="yLocation">
             </td>
         </tr>
     </table>
