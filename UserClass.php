@@ -52,5 +52,12 @@ class UserClass
         $row = mysql_fetch_assoc($result);
         return $row['xLocation']/1000;
     }
+    function getYLocation()
+    {
+        $db = new DatabaseClass();
+        $result = mysql_query("SELECT yLocation FROM user WHERE user_id = $this->user_id");
+        $row = mysql_fetch_assoc($result);
+        return $row['yLocation']/1000;
+    }
 }
 ?>
