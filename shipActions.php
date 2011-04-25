@@ -20,6 +20,16 @@
                 Location: <?php echo $user->getXLocation() ?>, <?php echo $user->getYLocation() ?>
             </td>
         </tr>
+        <tr>
+            <td>
+                Thruster Level: <?php echo $user->getThrusterLevel() ?>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Scanner Level: <?php echo $user->getScannerLevel() ?>
+            </td>
+        </tr>
     </table>
   </body>
 </html>
