@@ -4,13 +4,27 @@ class MainMenuClass
     private static $menu;
     private static function addMenuItemAuto($name, $file)
     {
-        if($file == basename($_SERVER['REQUEST_URI'], ".php") . ".php")
+        if("" == basename($_SERVER['REQUEST_URI'], ".php"))
         {
-            MainMenuClass::$menu->addMenuItem(new MenuItemClass($name, $file, true));
+            if($name == Index)
+            {
+                MainMenuClass::$menu->addMenuItem(new MenuItemClass($name, $file, true));
+            }
+            else
+            {
+                MainMenuClass::$menu->addMenuItem(new MenuItemClass($name, $file, false));
+            }
         }
         else
         {
-            MainMenuClass::$menu->addMenuItem(new MenuItemClass($name, $file, false));
+            if($file == basename($_SERVER['REQUEST_URI'], ".php") . ".php")
+            {
+                MainMenuClass::$menu->addMenuItem(new MenuItemClass($name, $file, true));
+            }
+            else
+            {
+                MainMenuClass::$menu->addMenuItem(new MenuItemClass($name, $file, false));
+            }
         }
     }
     static function show($isAdmin)
