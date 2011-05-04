@@ -35,7 +35,12 @@ class AnimalClass
     function setName($name)
     {
         $db = new DatabaseClass();
-        mysql_query("UPDATE animals SET name = '$name' WHERE user_id = $this->id");
+        mysql_query("UPDATE animals SET name = '$name' WHERE id = $this->id");
+    }
+    function deleteAnimal()
+    {
+        $db = new DatabaseClass();
+        mysql_query("DELETE FROM animals WHERE id = $this-id");
     }
 }
 ?>
