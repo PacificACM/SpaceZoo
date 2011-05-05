@@ -77,5 +77,14 @@ class UserClass
         $row = mysql_fetch_assoc($result);
         return $row['scannerLevel'];
     }
+    function calculateTimeToMoveInSeconds($newXLocation, $newYLocation)
+    {
+        $currXLocation = $this->getXLocation();
+        $currYLocation = $this->getYLocation();
+        $currThrusterLevel = $this->getThrusterLevel();
+        $distanceToTarget = MathClass::calculateDistance($currXLocation, $currYLocation, $newXLocation, $newYLocation);
+        $startupTime = 100/$currThrusterLevel;
+        return $startupTime + $distanceToTarget / $currThrusterLevel;
+    }
 }
 ?>
