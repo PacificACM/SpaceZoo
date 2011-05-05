@@ -37,5 +37,11 @@ class MathClass
         $normallyDistributedRand = sqrt(-2*log($randFloat1))*cos(2*pi()*$randFloat2);
 	return $normallyDistributedRand;
     }
+    static function calculateDistance($x1, $y1, $x2, $y2)
+    {
+	$xDiff = $x1 - $x2;
+	$yDiff = $y1 - $y2;
+	return sqrt($xDiff*$xDiff + $yDiff*$yDiff);
+    }
 }
 ?>
