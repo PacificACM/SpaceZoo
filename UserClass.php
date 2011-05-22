@@ -82,7 +82,7 @@ class UserClass
         $currXLocation = $this->getXLocation();
         $currYLocation = $this->getYLocation();
         $currThrusterLevel = $this->getThrusterLevel();
-        $distanceToTarget = MathClass::calculateDistance($currXLocation, $currYLocation, $newXLocation, $newYLocation);
+        $distanceToTarget = MathClass::calculateDistance($currXLocation, $currYLocation, $newXLocation*1000, $newYLocation*1000);
         $startupTime = 100/$currThrusterLevel;
         return $startupTime + $distanceToTarget / $currThrusterLevel;
     }
