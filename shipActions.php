@@ -50,22 +50,53 @@
     </table>
     <br />
     <br />
-    <table class="main">
-        <tr>
-            <th>
-                Move
-            </th>
-        </tr>
-        <tr>
-            <td>
-                X Coordinates: <input type="text" name="xLocation"> Y Coordinates: <input type="text" name="yLocation">
-            </td>
-        </tr>
-        <tr>
-            <td style="text-align: center">
-                <input type="submit" name="calculateTrajectory" value="Calculate Trajectory">
-            </td>
-        </tr>
-    </table>
+    <form name="form1" method="post" action="shipActions.php">
+    <?php
+        if(isset($_POST['calculateTrajectory']))
+        {
+    ?>
+            <table class="main">
+            <tr>
+                <th>
+                    Confirm Move
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    Moving this far will take <?php echo $user->calculateTimeToMoveInSeconds($_POST['xLocation'], $_POST['yLocation']) ?>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: center">
+                    <input type="submit" name="confirmMove" value="Confirm">
+                </td>
+            </tr>
+            </table>    
+    <?php
+        }
+        else
+        {
+    ?>
+            <table class="main">
+                <tr>
+                    <th>
+                        Move
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        X Coordinates: <input type="text" name="xLocation"> Y Coordinates: <input type="text" name="yLocation">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: center">
+                        <input type="submit" name="calculateTrajectory" value="Calculate Trajectory">
+                    </td>
+                </tr>
+            </table>
+    <?php
+        }
+    ?>
+    </form>
   </body>
 </html>
