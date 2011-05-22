@@ -63,12 +63,12 @@
             </tr>
             <tr>
                 <td>
-                    Moving this far will take <?php echo $user->calculateTimeToMoveInSeconds($_POST['xLocation'], $_POST['yLocation']) ?>
+                    Moving to location (<?php echo $_POST['xLocation'] ?>, <?php echo $_POST['yLocation'] ?>) will take <?php echo round($user->calculateTimeToMoveInSeconds($_POST['xLocation'], $_POST['yLocation'])) ?> seconds
                 </td>
             </tr>
             <tr>
                 <td style="text-align: center">
-                    <input type="submit" name="confirmMove" value="Confirm">
+                    <input type="submit" name="confirmMove" value="Confirm"> <input type="submit" name="cancelMove" value="Cancel">
                 </td>
             </tr>
             </table>    
