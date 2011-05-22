@@ -99,10 +99,6 @@ class PlanetClass
         $db = new DatabaseClass();
         $animalTypes = $this->getAnimalTypes();
         $numAnimalTypes = count($animalTypes);
-        //Will have to do some sort of normilization
-        //lower rarity values mean better chance that it
-        //should hit the random numberl
-        
         $rarityArr = PlanetClass::getRarityArr($animalTypes);
         $lcmRarity = MathClass::lcmArr($rarityArr);
         for($i = 0; $i < count($rarityArr); $i++)
@@ -124,7 +120,8 @@ class PlanetClass
             }
         }
         $chosenAnimalType = $animalTypes[$chosenAnimalTypeIndex];
-        
+        $newAnimal = $chosenAnimalType->createNewAnimal();
+        return $newAnimal;
     }
 }
 ?>
