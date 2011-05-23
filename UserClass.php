@@ -117,12 +117,12 @@ class UserClass
     private function setFutureXLocation($futureXLocation)
     {
         $db = new DatabaseClass();
-        mysql_query("UPDATE user SET futureXLocation = $futureXLocation WHERE user_id = $id");
+        mysql_query("UPDATE user SET futureXLocation = $futureXLocation*1000 WHERE user_id = $id");
     }
     private function setFutureYLocation($futureYLocation)
     {
         $db = new DatabaseClass();
-        mysql_query("UPDATE user SET futureYLocation = $futureXLocation WHERE user_id = $id");
+        mysql_query("UPDATE user SET futureYLocation = $futureXLocation*1000 WHERE user_id = $id");
     }
     private function setTravelStartedTime($travelStartedTime)
     {
