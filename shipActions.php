@@ -52,6 +52,10 @@
     <br />
     <form name="form1" method="post" action="shipActions.php">
     <?php
+        if(isset($_POST['confirmMove']))
+        {
+            $user->moveToLocation($_POST['xLocation'], $_POST['yLocation']);
+        }
         if(isset($_POST['calculateTrajectory']))
         {
     ?>
