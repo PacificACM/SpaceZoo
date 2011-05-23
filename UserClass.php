@@ -112,7 +112,7 @@ class UserClass
         $timeToMove = $this->calculateTimeToMoveInSeconds($newXLocation, $newYLocation);
         $this->setFutureXLocation($newXLocation);
         $this->setFutureYLocation($newYLocation);
-        $this->setTravelStartedTime(gettimeofday(true));
+        $this->setTravelStartedTime(TimeClass::getCurrTimeAsBigInt());
     }
     private function setFutureXLocation($futureXLocation)
     {
