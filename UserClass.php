@@ -82,14 +82,14 @@ class UserClass
         $db = new DatabaseClass();
         $result = mysql_query("SELECT futureXLocation FROM user WHERE user_id = $this->user_id");
         $row = mysql_fetch_assoc($result);
-        return $row['futureXLocation'];
+        return $row['futureXLocation']/1000;
     }
     function getFutureYLocation()
     {
         $db = new DatabaseClass();
         $result = mysql_query("SELECT futureYLocation FROM user WHERE user_id = $this->user_id");
         $row = mysql_fetch_assoc($result);
-        return $row['futureYLocation'];
+        return $row['futureYLocation']/1000;
     }
     function getTravelTimeLeftInMilliseconds()
     {
