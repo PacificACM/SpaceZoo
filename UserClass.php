@@ -91,12 +91,12 @@ class UserClass
         $row = mysql_fetch_assoc($result);
         return $row['futureYLocation']/1000;
     }
-    function getTravelTimeLeftInMilliseconds()
+    function getTravelStartedTime()
     {
         $db = new DatabaseClass();
-        $result = mysql_query("SELECT travelTimeLeftInMilliseconds FROM user WHERE user_id = $this->user_id");
+        $result = mysql_query("SELECT travelStartedTime FROM user WHERE user_id = $this->user_id");
         $row = mysql_fetch_assoc($result);
-        return $row['travelTimeLeftInMilliseconds'];
+        return $row['travelStartedTime'];
     }
     function getScannerLevel()
     {
@@ -117,7 +117,21 @@ class UserClass
     function moveToLocation($newXLocation, $newYLocation)
     {
         $timeToMove = $this->calculateTimeToMoveInSeconds($newXLocation, $newYLocation);
-        
+    }
+    private function setFutureXLocation($futureXLocation)
+    {
+        $db = new DatabaseClass();
+        mysql_query("UPDATE user SET futureXLocation = $futureXLocation WHERE user_id = $id");
+    }
+    private function setFutureXLocation($futureXLocation)
+    {
+        $db = new DatabaseClass();
+        mysql_query("UPDATE user SET futureXLocation = $futureXLocation WHERE user_id = $id");
+    }
+    private function setFutureYLocation($futureYLocation)
+    {
+        $db = new DatabaseClass();
+        mysql_query("UPDATE user SET futureYLocation = $futureXLocation WHERE user_id = $id");
     }
 }
 ?>
