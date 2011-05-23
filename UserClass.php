@@ -133,5 +133,10 @@ class UserClass
         $db = new DatabaseClass();
         mysql_query("UPDATE user SET futureYLocation = $futureXLocation WHERE user_id = $id");
     }
+    private function setTravelStartedTime($travelStartedTime)
+    {
+        $db = new DatabaseClass();
+        mysql_query("UPDATE user SET travelStartedTime = '$travelStartedTime' WHERE user_id = $id");
+    }
 }
 ?>
