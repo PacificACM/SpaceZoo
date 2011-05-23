@@ -14,7 +14,7 @@ class UserClass
         $currentDateTime = date("Y-m-d H:i:s");
         if($foundUser == 0)
         {
-            mysql_query("INSERT INTO user (user_id, firstSeen, lastSeen, currentPlanetID) VALUES ('$id', '$currentDateTime', '$currentDateTime', -1)");
+            mysql_query("INSERT INTO user (user_id, firstSeen, lastSeen, currentPlanetID, xLocation, yLocation, thrusterLevel, scannerLevel, futureXLocation, futureYLocation, travelTimeLeftInMilliseconds) VALUES ('$id', '$currentDateTime', '$currentDateTime', -1, 0, 0, 1, 1, 0, 0, 0)");
         }
         else
         {
@@ -69,6 +69,34 @@ class UserClass
         $result = mysql_query("SELECT thrusterLevel FROM user WHERE user_id = $this->user_id");
         $row = mysql_fetch_assoc($result);
         return $row['thrusterLevel'];
+    }
+    function getScannerLevel()
+    {
+        $db = new DatabaseClass();
+        $result = mysql_query("SELECT scannerLevel FROM user WHERE user_id = $this->user_id");
+        $row = mysql_fetch_assoc($result);
+        return $row['scannerLevel'];
+    }
+    function getFutureXLocation()
+    {
+        $db = new DatabaseClass();
+        $result = mysql_query("SELECT futureXLocation FROM user WHERE user_id = $this->user_id");
+        $row = mysql_fetch_assoc($result);
+        return $row['futureXLocation'];
+    }
+    function getFutureYLocation()
+    {
+        $db = new DatabaseClass();
+        $result = mysql_query("SELECT futureYLocation FROM user WHERE user_id = $this->user_id");
+        $row = mysql_fetch_assoc($result);
+        return $row['futureYLocation'];
+    }
+    function getTravelTimeLeftInMilliseconds()
+    {
+        $db = new DatabaseClass();
+        $result = mysql_query("SELECT travelTimeLeftInMilliseconds FROM user WHERE user_id = $this->user_id");
+        $row = mysql_fetch_assoc($result);
+        return $row['travelTimeLeftInMilliseconds'];
     }
     function getScannerLevel()
     {
