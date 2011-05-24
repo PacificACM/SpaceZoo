@@ -148,14 +148,14 @@ class UserClass
     private function setXLocation($xLocation)
     {
         $db = new DatabaseClass();
-        $futureXLocationAsInt = $futureXLocation*1000;
-        mysql_query("UPDATE user SET xLocation = $xLocation WHERE user_id = $this->user_id");
+        $xLocationAsInt = $xLocation*1000;
+        mysql_query("UPDATE user SET xLocation = $xLocationAsInt WHERE user_id = $this->user_id");
     }
     private function setYLocation($yLocation)
     {
         $db = new DatabaseClass();
-        $futureYLocationAsInt = $futureYLocation*1000;
-        mysql_query("UPDATE user SET yLocation = $yLocation WHERE user_id = $this->user_id");
+        $yLocationAsInt = $yLocation*1000;
+        mysql_query("UPDATE user SET yLocation = $yLocationAsInt WHERE user_id = $this->user_id");
     }
     private function setFutureXLocation($futureXLocation)
     {
