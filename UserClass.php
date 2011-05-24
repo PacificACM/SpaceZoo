@@ -127,6 +127,8 @@ class UserClass
         $travelTimeLeft = $this->getTravelMicroTimeLeft();
         if($travelTimeLeft <= 0)
         {
+            $this->setXLocation($this->getFutureXLocation());
+            $this->setYLocation($this->getFutureYLocation());
             return false;
         }
         return true;
