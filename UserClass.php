@@ -146,30 +146,30 @@ class UserClass
     {
         $db = new DatabaseClass();
         $futureXLocationAsInt = $futureXLocation*1000;
-        mysql_query("UPDATE user SET xLocation = $xLocation WHERE user_id = $id");
+        mysql_query("UPDATE user SET xLocation = $xLocation WHERE user_id = $this->user_id");
     }
     private function setYLocation($yLocation)
     {
         $db = new DatabaseClass();
         $futureYLocationAsInt = $futureYLocation*1000;
-        mysql_query("UPDATE user SET yLocation = $yLocation WHERE user_id = $id");
+        mysql_query("UPDATE user SET yLocation = $yLocation WHERE user_id = $this->user_id");
     }
     private function setFutureXLocation($futureXLocation)
     {
         $db = new DatabaseClass();
         $futureXLocationAsInt = $futureXLocation*1000;
-        mysql_query("UPDATE user SET futureXLocation = $futureXLocationAsInt WHERE user_id = $id");
+        mysql_query("UPDATE user SET futureXLocation = $futureXLocationAsInt WHERE user_id = $this->user_id");
     }
     private function setFutureYLocation($futureYLocation)
     {
         $db = new DatabaseClass();
         $futureYLocationAsInt = $futureYLocation*1000;
-        mysql_query("UPDATE user SET futureYLocation = $futureYLocationAsInt WHERE user_id = $id");
+        mysql_query("UPDATE user SET futureYLocation = $futureYLocationAsInt WHERE user_id = $this->user_id");
     }
     private function setTravelStartedTime($travelStartedTime)
     {
         $db = new DatabaseClass();
-        mysql_query("UPDATE user SET travelStartedTime = DATEADD(mcs, $travelStartedTime, '1970-01-01') WHERE user_id = $id");
+        mysql_query("UPDATE user SET travelStartedTime = DATEADD(mcs, $travelStartedTime, '1970-01-01') WHERE user_id = $this->user_id");
     }
 }
 ?>
