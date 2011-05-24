@@ -111,6 +111,9 @@ class UserClass
     {
         $this->setFutureXLocation($newXLocation);
         $this->setFutureYLocation($newYLocation);
+    }
+    function makeMove()
+    {
         $this->setTravelStartedTime(TimeClass::getCurrMicroTimeAsBigInt());
     }
     function getTravelMicroTimeLeft()
