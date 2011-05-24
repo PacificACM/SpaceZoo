@@ -141,6 +141,16 @@ class UserClass
         $stringFutureLocation = "(" + $this->getFutureXLocation() + ", " + $this->getFutureYLocation() + ")";
         return $stringFutureLocation;
     }
+    private function setXLocation($xLocation)
+    {
+        $db = new DatabaseClass();
+        mysql_query("UPDATE user SET xLocation = $xLocation*1000 WHERE user_id = $id");
+    }
+    private function setYLocation($yLocation)
+    {
+        $db = new DatabaseClass();
+        mysql_query("UPDATE user SET yLocation = $yLocation*1000 WHERE user_id = $id");
+    }
     private function setFutureXLocation($futureXLocation)
     {
         $db = new DatabaseClass();
