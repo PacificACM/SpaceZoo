@@ -114,6 +114,13 @@ class UserClass
         $this->setFutureYLocation($newYLocation);
         $this->setTravelStartedTime(TimeClass::getCurrMicroTimeAsBigInt());
     }
+    function getTravelMicroTimeLeft()
+    {
+        $timeTraveled = TimeClass::getCurrMicroTimeAsBigInt() - $this->getTravelStartedTime();
+        $timeNeededToTravel = $this->calculateTimeToMoveInSeconds($this->getFutureXLocation(), $this->getFutureYLocation());
+        $travelTimeLeft = $timeNeededToTravel - $timeTraveled;
+        return $travelTimeLeft;
+    }
     private function setFutureXLocation($futureXLocation)
     {
         $db = new DatabaseClass();
