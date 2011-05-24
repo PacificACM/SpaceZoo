@@ -67,7 +67,7 @@
             </tr>
             <tr>
                 <td>
-                    You are moving to location <?php echo $user->getStringFutureLocation() ?> and it will take you <?php echo $user->getTravelMicroTimeLeft()/1000000 ?> seconds
+                    You are moving to location <?php echo $user->getStringFutureLocation() ?> and it will take you <?php echo round($user->getTravelMicroTimeLeft()/1000000) ?> seconds longer
                 </td>
             </tr>
             </table>
