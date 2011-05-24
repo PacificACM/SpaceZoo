@@ -125,6 +125,7 @@ class UserClass
     function isTraveling()
     {
         $travelTimeLeft = $this->getTravelMicroTimeLeft();
+        echo $travelTimeLeft;
         if($travelTimeLeft <= 0)
         {
             $this->setXLocation($this->getFutureXLocation());
@@ -146,22 +147,26 @@ class UserClass
     private function setXLocation($xLocation)
     {
         $db = new DatabaseClass();
-        mysql_query("UPDATE user SET xLocation = $xLocation*1000 WHERE user_id = $id");
+        $futureXLocationAsInt = $futureXLocation*1000;
+        mysql_query("UPDATE user SET xLocation = $xLocation WHERE user_id = $id");
     }
     private function setYLocation($yLocation)
     {
         $db = new DatabaseClass();
-        mysql_query("UPDATE user SET yLocation = $yLocation*1000 WHERE user_id = $id");
+        $futureYLocationAsInt = $futureYLocation*1000;
+        mysql_query("UPDATE user SET yLocation = $yLocation WHERE user_id = $id");
     }
     private function setFutureXLocation($futureXLocation)
     {
         $db = new DatabaseClass();
-        mysql_query("UPDATE user SET futureXLocation = $futureXLocation*1000 WHERE user_id = $id");
+        $futureXLocationAsInt = $futureXLocation*1000;
+        mysql_query("UPDATE user SET futureXLocation = $futureXLocationAsInt WHERE user_id = $id");
     }
     private function setFutureYLocation($futureYLocation)
     {
         $db = new DatabaseClass();
-        mysql_query("UPDATE user SET futureYLocation = $futureXLocation*1000 WHERE user_id = $id");
+        $futureYLocationAsInt = $futureYLocation*1000;
+        mysql_query("UPDATE user SET futureYLocation = $futureYLocationAsInt WHERE user_id = $id");
     }
     private function setTravelStartedTime($travelStartedTime)
     {
