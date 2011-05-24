@@ -137,12 +137,12 @@ class UserClass
     }
     function getStringLocation()
     {
-        $stringLocation = "(" + $this->getXLocation() + ", " + $this->getYLocation() + ")";
+        $stringLocation = "(" . $this->getXLocation() . ", " . $this->getYLocation() . ")";
         return $stringLocation;
     }
     function getStringFutureLocation()
     {
-        $stringFutureLocation = "(" + $this->getFutureXLocation() + ", " + $this->getFutureYLocation() + ")";
+        $stringFutureLocation = "(" . $this->getFutureXLocation() . ", " . $this->getFutureYLocation() . ")";
         return $stringFutureLocation;
     }
     private function setXLocation($xLocation)
@@ -172,7 +172,7 @@ class UserClass
     private function setTravelStartedTime($travelStartedTime)
     {
         $db = new DatabaseClass();
-        mysql_query("UPDATE user SET travelStartedTime = DATEADD(mcs, $travelStartedTime, '1970-01-01') WHERE user_id = $this->user_id");
+        mysql_query("UPDATE user SET travelStartedTime = $travelStartedTime WHERE user_id = $this->user_id");
     }
 }
 ?>
