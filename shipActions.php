@@ -73,50 +73,53 @@
             </table>
     <?php
         }
-        if(isset($_POST['calculateTrajectory']))
-        {
-            $user->setLocationToMove($_POST['xLocation'], $_POST['yLocation']);
-    ?>
-            <table class="main">
-            <tr>
-                <th>
-                    Confirm Move
-                </th>
-            </tr>
-            <tr>
-                <td>
-                    Moving to location (<?php echo $_POST['xLocation'] ?>, <?php echo $_POST['yLocation'] ?>) will take <?php echo round($user->calculateTimeToMoveInSeconds($_POST['xLocation'], $_POST['yLocation'])) ?> seconds
-                </td>
-            </tr>
-            <tr>
-                <td style="text-align: center">
-                    <input type="submit" name="confirmMove" value="Confirm"> <input type="submit" name="cancelMove" value="Cancel">
-                </td>
-            </tr>
-            </table>
-    <?php
-        }
         else
         {
+            if(isset($_POST['calculateTrajectory']))
+            {
+                $user->setLocationToMove($_POST['xLocation'], $_POST['yLocation']);
     ?>
-            <table class="main">
+                <table class="main">
                 <tr>
                     <th>
-                        Move
+                        Confirm Move
                     </th>
                 </tr>
                 <tr>
                     <td>
-                        X Coordinates: <input type="text" name="xLocation"> Y Coordinates: <input type="text" name="yLocation">
+                        Moving to location (<?php echo $_POST['xLocation'] ?>, <?php echo $_POST['yLocation'] ?>) will take <?php echo round($user->calculateTimeToMoveInSeconds($_POST['xLocation'], $_POST['yLocation'])) ?> seconds
                     </td>
                 </tr>
                 <tr>
                     <td style="text-align: center">
-                        <input type="submit" name="calculateTrajectory" value="Calculate Trajectory">
+                        <input type="submit" name="confirmMove" value="Confirm"> <input type="submit" name="cancelMove" value="Cancel">
                     </td>
                 </tr>
-            </table>
+                </table>
     <?php
+            }
+            else
+            {
+    ?>
+                <table class="main">
+                    <tr>
+                        <th>
+                            Move
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            X Coordinates: <input type="text" name="xLocation"> Y Coordinates: <input type="text" name="yLocation">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center">
+                            <input type="submit" name="calculateTrajectory" value="Calculate Trajectory">
+                        </td>
+                    </tr>
+                </table>
+    <?php
+            }
         }
     ?>
     </form>
