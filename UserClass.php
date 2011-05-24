@@ -118,7 +118,8 @@ class UserClass
     {
         $timeTraveled = TimeClass::getCurrMicroTimeAsBigInt() - $this->getTravelStartedTime();
         $timeNeededToTravel = $this->calculateTimeToMoveInSeconds($this->getFutureXLocation(), $this->getFutureYLocation());
-        $travelTimeLeft = $timeNeededToTravel - $timeTraveled;
+        $timeNeededToTravelInMicro = $timeNeededToTravel*1000000;
+        $travelTimeLeft = $timeNeededToTravelInMicro - $timeTraveled;
         return $travelTimeLeft;
     }
     function isTraveling()
