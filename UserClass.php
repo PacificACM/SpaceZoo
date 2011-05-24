@@ -121,6 +121,15 @@ class UserClass
         $travelTimeLeft = $timeNeededToTravel - $timeTraveled;
         return $travelTimeLeft;
     }
+    function isTraveling()
+    {
+        $travelTimeLeft = $this->getTravelMicroTimeLeft();
+        if($travelTimeLeft <= 0)
+        {
+            return false;
+        }
+        return true;
+    }
     private function setFutureXLocation($futureXLocation)
     {
         $db = new DatabaseClass();
