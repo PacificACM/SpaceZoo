@@ -52,6 +52,23 @@
     <br />
     <form name="form1" method="post" action="shipActions.php">
     <?php
+        if($user->isTraveling())
+        {
+    ?>
+            <table class="main">
+            <tr>
+                <th>
+                    Traveling
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    You are moving to location <?php echo $user->getStringFutureLocation() ?> and it will take you <?php echo $user->getTravelMicroTimeLeft()/1000000 ?> seconds
+                </td>
+            </tr>
+            </table>
+    <?php
+        }
         if(isset($_POST['confirmMove']))
         {
             $user->moveToLocation($_POST['xLocation'], $_POST['yLocation']);
