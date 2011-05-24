@@ -107,7 +107,7 @@ class UserClass
         $startupTime = 100/$currThrusterLevel;
         return $startupTime + $distanceToTarget / $currThrusterLevel;
     }
-    function moveToLocation($newXLocation, $newYLocation)
+    function setLocationToMove($newXLocation, $newYLocation)
     {
         $this->setFutureXLocation($newXLocation);
         $this->setFutureYLocation($newYLocation);
