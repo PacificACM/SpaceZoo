@@ -52,6 +52,10 @@
     <br />
     <form name="form1" method="post" action="shipActions.php">
     <?php
+        if(isset($_POST['confirmMove']))
+        {
+            $user->makeMove();
+        }
         if($user->isTraveling())
         {
     ?>
@@ -69,12 +73,9 @@
             </table>
     <?php
         }
-        if(isset($_POST['confirmMove']))
-        {
-            $user->moveToLocation($_POST['xLocation'], $_POST['yLocation']);
-        }
         if(isset($_POST['calculateTrajectory']))
         {
+            $user->setLocationToMove($_POST['xLocation'], $_POST['yLocation']);
     ?>
             <table class="main">
             <tr>
@@ -92,7 +93,7 @@
                     <input type="submit" name="confirmMove" value="Confirm"> <input type="submit" name="cancelMove" value="Cancel">
                 </td>
             </tr>
-            </table>    
+            </table>
     <?php
         }
         else
