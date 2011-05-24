@@ -1,7 +1,7 @@
 <?php
 class TimeClass
 {
-    static function getCurrTimeAsBigInt()
+    static function getCurrMicroTimeAsBigInt()
     {
         $timeOfDayArr = gettimeofday();
         return $timeOfDayArr['sec']*1000000 + $timeOfDayArr['usec']
