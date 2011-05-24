@@ -109,7 +109,6 @@ class UserClass
     }
     function moveToLocation($newXLocation, $newYLocation)
     {
-        $timeToMove = $this->calculateTimeToMoveInSeconds($newXLocation, $newYLocation);
         $this->setFutureXLocation($newXLocation);
         $this->setFutureYLocation($newYLocation);
         $this->setTravelStartedTime(TimeClass::getCurrMicroTimeAsBigInt());
@@ -170,7 +169,7 @@ class UserClass
     private function setTravelStartedTime($travelStartedTime)
     {
         $db = new DatabaseClass();
-        mysql_query("UPDATE user SET travelStartedTime = '$travelStartedTime' WHERE user_id = $id");
+        mysql_query("UPDATE user SET travelStartedTime = DATEADD(mcs, $travelStartedTime, '1970-01-01') WHERE user_id = $id");
     }
 }
 ?>
