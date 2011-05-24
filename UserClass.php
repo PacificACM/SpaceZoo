@@ -130,6 +130,16 @@ class UserClass
         }
         return true;
     }
+    function getStringLocation()
+    {
+        $stringLocation = "(" + $this->getXLocation() + ", " + $this->getYLocation() + ")";
+        return $stringLocation;
+    }
+    function getStringFutureLocation()
+    {
+        $stringFutureLocation = "(" + $this->getFutureXLocation() + ", " + $this->getFutureYLocation() + ")";
+        return $stringFutureLocation;
+    }
     private function setFutureXLocation($futureXLocation)
     {
         $db = new DatabaseClass();
