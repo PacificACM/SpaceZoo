@@ -125,7 +125,6 @@ class UserClass
     function isTraveling()
     {
         $travelTimeLeft = $this->getTravelMicroTimeLeft();
-        echo $travelTimeLeft;
         if($travelTimeLeft <= 0)
         {
             $this->setXLocation($this->getFutureXLocation());
