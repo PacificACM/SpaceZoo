@@ -107,13 +107,10 @@ class UserClass
         $startupTime = 100/$currThrusterLevel;
         return $startupTime + $distanceToTarget / $currThrusterLevel;
     }
-    function setLocationToMove($newXLocation, $newYLocation)
+    function moveToLocation($newXLocation, $newYLocation)
     {
         $this->setFutureXLocation($newXLocation);
         $this->setFutureYLocation($newYLocation);
-    }
-    function makeMove()
-    {
         $this->setTravelStartedTime(TimeClass::getCurrMicroTimeAsBigInt());
     }
     function getTravelMicroTimeLeft()
