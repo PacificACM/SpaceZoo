@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!doctype html>
 <?php
     require 'facebookIncludes.php';
@@ -13,6 +16,10 @@
     <?php
         $user = new UserClass($facebook->getUser());
         MainMenuClass::show($user->isAdmin());
+        if(!$user->isTraveling())
+        {
+            $user->updateLocation();
+        }
     ?>
     <br />
     <br />
@@ -54,7 +61,7 @@
     <?php
         if(isset($_POST['confirmMove']))
         {
-            $user->makeMove();
+            $user->moveToLocation($_SESSION['xLocation'], $_SESSION['yLocation']);
         }
         if($user->isTraveling())
         {
@@ -77,7 +84,8 @@
         {
             if(isset($_POST['calculateTrajectory']))
             {
-                $user->setLocationToMove($_POST['xLocation'], $_POST['yLocation']);
+                $_SESSION['xLocation'] = $_POST['xLocation'];
+                $_SESSION['yLocation'] = $_POST['yLocation'];
     ?>
                 <table class="main">
                 <tr>
