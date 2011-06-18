@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!doctype html>
 <?php
     require 'facebookIncludes.php';
@@ -13,6 +16,10 @@
     <?php
         $user = new UserClass($facebook->getUser());
         MainMenuClass::show($user->isAdmin());
+        if(!$user->isTraveling())
+        {
+            $user->updateLocation();
+        }
     ?>
     <br />
     <br />
@@ -52,49 +59,75 @@
     <br />
     <form name="form1" method="post" action="shipActions.php">
     <?php
-        if(isset($_POST['calculateTrajectory']))
+        if(isset($_POST['confirmMove']))
+        {
+            $user->moveToLocation($_SESSION['xLocation'], $_SESSION['yLocation']);
+        }
+        if($user->isTraveling())
         {
     ?>
             <table class="main">
             <tr>
                 <th>
-                    Confirm Move
+                    Traveling
                 </th>
             </tr>
             <tr>
                 <td>
-                    Moving this far will take <?php echo $user->calculateTimeToMoveInSeconds($_POST['xLocation'], $_POST['yLocation']) ?>
+                    You are moving to location <?php echo $user->getStringFutureLocation() ?> and it will take you <?php echo round($user->getTravelMicroTimeLeft()/1000000) ?> seconds longer
                 </td>
             </tr>
-            <tr>
-                <td style="text-align: center">
-                    <input type="submit" name="confirmMove" value="Confirm">
-                </td>
-            </tr>
-            </table>    
+            </table>
     <?php
         }
         else
         {
+            if(isset($_POST['calculateTrajectory']))
+            {
+                $_SESSION['xLocation'] = $_POST['xLocation'];
+                $_SESSION['yLocation'] = $_POST['yLocation'];
     ?>
-            <table class="main">
+                <table class="main">
                 <tr>
                     <th>
-                        Move
+                        Confirm Move
                     </th>
                 </tr>
                 <tr>
                     <td>
-                        X Coordinates: <input type="text" name="xLocation"> Y Coordinates: <input type="text" name="yLocation">
+                        Moving to location (<?php echo $_POST['xLocation'] ?>, <?php echo $_POST['yLocation'] ?>) will take <?php echo round($user->calculateTimeToMoveInSeconds($_POST['xLocation'], $_POST['yLocation'])) ?> seconds
                     </td>
                 </tr>
                 <tr>
                     <td style="text-align: center">
-                        <input type="submit" name="calculateTrajectory" value="Calculate Trajectory">
+                        <input type="submit" name="confirmMove" value="Confirm"> <input type="submit" name="cancelMove" value="Cancel">
                     </td>
                 </tr>
-            </table>
+                </table>
     <?php
+            }
+            else
+            {
+    ?>
+                <table class="main">
+                    <tr>
+                        <th>
+                            Move
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            X Coordinates: <input type="text" name="xLocation"> Y Coordinates: <input type="text" name="yLocation">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center">
+                            <input type="submit" name="calculateTrajectory" value="Calculate Trajectory">
+                        </td>
+                    </tr>
+                </table>
+    <?php
+            }
         }
     ?>
     </form>

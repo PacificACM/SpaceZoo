@@ -17,8 +17,12 @@ class UserClass
         echo "DEBUG: The currentDateTime is $currentDateTime <br />";
         if($foundUser == 0)
         {
+<<<<<<< HEAD
             echo "DEBUG: I'm in the foundUser if <br />";
             mysql_query("INSERT INTO user (user_id, firstSeen, lastSeen, currentPlanetID) VALUES ('$id', '$currentDateTime', '$currentDateTime', -1)");
+=======
+            mysql_query("INSERT INTO user (user_id, firstSeen, lastSeen, currentPlanetID, xLocation, yLocation, thrusterLevel, scannerLevel, futureXLocation, futureYLocation, travelTimeLeftInMilliseconds) VALUES ('$id', '$currentDateTime', '$currentDateTime', -1, 0, 0, 1, 1, 0, 0, 0)");
+>>>>>>> f04b2dcd0167a39dfe712dc5a9c7512ce5c567d7
         }
         else
         {
@@ -81,6 +85,27 @@ class UserClass
         $row = mysql_fetch_assoc($result);
         return $row['scannerLevel'];
     }
+    function getFutureXLocation()
+    {
+        $db = new DatabaseClass();
+        $result = mysql_query("SELECT futureXLocation FROM user WHERE user_id = $this->user_id");
+        $row = mysql_fetch_assoc($result);
+        return $row['futureXLocation']/1000;
+    }
+    function getFutureYLocation()
+    {
+        $db = new DatabaseClass();
+        $result = mysql_query("SELECT futureYLocation FROM user WHERE user_id = $this->user_id");
+        $row = mysql_fetch_assoc($result);
+        return $row['futureYLocation']/1000;
+    }
+    function getTravelStartedTime()
+    {
+        $db = new DatabaseClass();
+        $result = mysql_query("SELECT travelStartedTime FROM user WHERE user_id = $this->user_id");
+        $row = mysql_fetch_assoc($result);
+        return $row['travelStartedTime'];
+    }
     function calculateTimeToMoveInSeconds($newXLocation, $newYLocation)
     {
         $currXLocation = $this->getXLocation();
@@ -89,6 +114,73 @@ class UserClass
         $distanceToTarget = MathClass::calculateDistance($currXLocation, $currYLocation, $newXLocation*1000, $newYLocation*1000);
         $startupTime = 100/$currThrusterLevel;
         return $startupTime + $distanceToTarget / $currThrusterLevel;
+    }
+    function moveToLocation($newXLocation, $newYLocation)
+    {
+        $this->setFutureXLocation($newXLocation);
+        $this->setFutureYLocation($newYLocation);
+        $this->setTravelStartedTime(TimeClass::getCurrMicroTimeAsBigInt());
+    }
+    function getTravelMicroTimeLeft()
+    {
+        $timeTraveled = TimeClass::getCurrMicroTimeAsBigInt() - $this->getTravelStartedTime();
+        $timeNeededToTravel = $this->calculateTimeToMoveInSeconds($this->getFutureXLocation(), $this->getFutureYLocation());
+        $timeNeededToTravelInMicro = $timeNeededToTravel*1000000;
+        $travelTimeLeft = $timeNeededToTravelInMicro - $timeTraveled;
+        return $travelTimeLeft;
+    }
+    function isTraveling()
+    {
+        $travelTimeLeft = $this->getTravelMicroTimeLeft();
+        if($travelTimeLeft <= 0)
+        {
+            return false;
+        }
+        return true;
+    }
+    function updateLocation()
+    {
+        $this->setXLocation($this->getFutureXLocation());
+        $this->setYLocation($this->getFutureYLocation());
+    }
+    function getStringLocation()
+    {
+        $stringLocation = "(" . $this->getXLocation() . ", " . $this->getYLocation() . ")";
+        return $stringLocation;
+    }
+    function getStringFutureLocation()
+    {
+        $stringFutureLocation = "(" . $this->getFutureXLocation() . ", " . $this->getFutureYLocation() . ")";
+        return $stringFutureLocation;
+    }
+    private function setXLocation($xLocation)
+    {
+        $db = new DatabaseClass();
+        $xLocationAsInt = $xLocation*1000;
+        mysql_query("UPDATE user SET xLocation = $xLocationAsInt WHERE user_id = $this->user_id");
+    }
+    private function setYLocation($yLocation)
+    {
+        $db = new DatabaseClass();
+        $yLocationAsInt = $yLocation*1000;
+        mysql_query("UPDATE user SET yLocation = $yLocationAsInt WHERE user_id = $this->user_id");
+    }
+    private function setFutureXLocation($futureXLocation)
+    {
+        $db = new DatabaseClass();
+        $futureXLocationAsInt = $futureXLocation*1000;
+        mysql_query("UPDATE user SET futureXLocation = $futureXLocationAsInt WHERE user_id = $this->user_id");
+    }
+    private function setFutureYLocation($futureYLocation)
+    {
+        $db = new DatabaseClass();
+        $futureYLocationAsInt = $futureYLocation*1000;
+        mysql_query("UPDATE user SET futureYLocation = $futureYLocationAsInt WHERE user_id = $this->user_id");
+    }
+    private function setTravelStartedTime($travelStartedTime)
+    {
+        $db = new DatabaseClass();
+        mysql_query("UPDATE user SET travelStartedTime = $travelStartedTime WHERE user_id = $this->user_id");
     }
 }
 ?>
