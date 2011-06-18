@@ -17,12 +17,8 @@ class UserClass
         echo "DEBUG: The currentDateTime is $currentDateTime <br />";
         if($foundUser == 0)
         {
-<<<<<<< HEAD
             echo "DEBUG: I'm in the foundUser if <br />";
-            mysql_query("INSERT INTO user (user_id, firstSeen, lastSeen, currentPlanetID) VALUES ('$id', '$currentDateTime', '$currentDateTime', -1)");
-=======
             mysql_query("INSERT INTO user (user_id, firstSeen, lastSeen, currentPlanetID, xLocation, yLocation, thrusterLevel, scannerLevel, futureXLocation, futureYLocation, travelTimeLeftInMilliseconds) VALUES ('$id', '$currentDateTime', '$currentDateTime', -1, 0, 0, 1, 1, 0, 0, 0)");
->>>>>>> f04b2dcd0167a39dfe712dc5a9c7512ce5c567d7
         }
         else
         {
