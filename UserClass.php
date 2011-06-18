@@ -4,6 +4,7 @@ class UserClass
     private $user_id;
     function __construct($id)
     {
+        echo "DEBUG: I think you are user $id <br />";
         if($id == 0)
         {
             die('You need to authorize the app or sign into facebook');
@@ -11,9 +12,12 @@ class UserClass
         $db = new DatabaseClass();
         $result = mysql_query("SELECT user_id FROM user WHERE user_id = $id");
         $foundUser = mysql_numrows($result);
+        echo "DEBUG: My found variable is $foundUser <br />";
         $currentDateTime = date("Y-m-d H:i:s");
+        echo "DEBUG: The currentDateTime is $currentDateTime <br />";
         if($foundUser == 0)
         {
+            echo "DEBUG: I'm in the foundUser if <br />";
             mysql_query("INSERT INTO user (user_id, firstSeen, lastSeen, currentPlanetID) VALUES ('$id', '$currentDateTime', '$currentDateTime', -1)");
         }
         else
